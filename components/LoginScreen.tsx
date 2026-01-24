@@ -1,8 +1,9 @@
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { SchoolProfile } from '../types';
 import { analyzeSchoolWithGemini } from '../services/geminiService';
-import { Loader2, ArrowRight, CheckCircle2, MapPin, Terminal, Search, Shield, Cpu } from 'lucide-react';
+import { Loader2, ArrowRight, CheckCircle2, MapPin, Terminal, Search, Shield, Cpu, AlertCircle } from 'lucide-react';
+import { validateLoginForm, FormErrors, hasErrors, validators } from '../services/validationService';
 
 import { useError } from '../contexts/ErrorContext';
 
@@ -17,6 +18,8 @@ export const LoginScreen: React.FC<Props> = ({ onLogin }) => {
   const [logs, setLogs] = useState<string[]>([]);
   const logsEndRef = useRef<HTMLDivElement>(null);
   const { setError } = useError();
+  const [errors, setErrors] = useState<FormErrors>({});
+  const [touched, setTouched] = useState<{ [key: string]: boolean }>({});
 
   const addLog = (msg: string) => setLogs(prev => [...prev, msg]);
 
@@ -25,6 +28,79 @@ export const LoginScreen: React.FC<Props> = ({ onLogin }) => {
           logsEndRef.current.scrollIntoView({ behavior: "smooth" });
       }
   }, [logs]);
+
+  // Real-time validation
+  const validateField = useCallback((fieldName: string, value: string) => {
+    let error: string | undefined;
+
+    if (fieldName === 'name') {
+      const result = validators.required(value, 'Schulname');
+      if (!result.isValid) {
+        error = result.error;
+      } else if (value.length < 3) {
+        error = 'Schulname muss mindestens 3 Zeichen haben';
+      }
+    } else if (fieldName === 'city') {
+      const result = validators.required(value, 'Stadt');
+      if (!result.isValid) {
+        error = result.error;
+      } else if (value.length < 2) {
+        error = 'Stadt muss mindestens 2 Zeichen haben';
+      }
+    }
+
+    setErrors(prev => ({ ...prev, [fieldName]: error }));
+  }, []);
+
+  const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setName(value);
+    if (touched.name) {
+      validateField('name', value);
+    }
+  };
+
+  const handleCityChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setCity(value);
+    if (touched.city) {
+      validateField('city', value);
+    }
+  };
+
+  const handleBlur = (fieldName: string, value: string) => {
+    setTouched(prev => ({ ...prev, [fieldName]: true }));
+    validateField(fieldName, value);
+  };
+
+  // Check if form is valid
+  const isFormValid = useCallback(() => {
+    const validationErrors = validateLoginForm(name, city);
+    return !hasErrors(validationErrors) && name.length >= 3 && city.length >= 2;
+  }, [name, city]);
+
+  // Inline error component
+  const ErrorMessage: React.FC<{ error?: string }> = ({ error }) => {
+    if (!error) return null;
+    return (
+      <div className="flex items-center gap-1 mt-2 text-red-500 text-xs animate-in fade-in slide-in-from-top-1 duration-200">
+        <AlertCircle className="w-3 h-3" />
+        <span>{error}</span>
+      </div>
+    );
+  };
+
+  // Get input border class based on validation state
+  const getInputClass = (fieldName: string) => {
+    const baseClass = 'w-full border-b-2 py-3 text-xl font-bold focus:outline-none transition-all placeholder:text-stone-200';
+    if (touched[fieldName] && errors[fieldName]) {
+      return `${baseClass} border-red-400 focus:border-red-500`;
+    }
+    if (touched[fieldName] && !errors[fieldName]) {
+      return `${baseClass} border-green-400 focus:border-green-500`;
+    }
+    return `${baseClass} border-stone-100 focus:border-black`;
+  };
 
   const handleAnalyze = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -127,30 +203,34 @@ export const LoginScreen: React.FC<Props> = ({ onLogin }) => {
                     <form onSubmit={handleAnalyze} className="space-y-8">
                         <div className="group">
                             <label className="block text-[10px] font-mono uppercase tracking-widest text-stone-400 mb-2 font-bold">Name der Grundschule</label>
-                            <input 
-                                type="text" 
-                                value={name} 
-                                onChange={e => setName(e.target.value)} 
-                                required 
-                                className="w-full border-b-2 border-stone-100 py-3 text-xl font-bold focus:outline-none focus:border-black transition-all placeholder:text-stone-200" 
-                                placeholder="z.B. Katholische Grundschule..." 
+                            <input
+                                type="text"
+                                value={name}
+                                onChange={handleNameChange}
+                                onBlur={() => handleBlur('name', name)}
+                                required
+                                className={getInputClass('name')}
+                                placeholder="z.B. Katholische Grundschule..."
                             />
+                            <ErrorMessage error={touched.name ? errors.name : undefined} />
                         </div>
                         <div className="group">
                             <label className="block text-[10px] font-mono uppercase tracking-widest text-stone-400 mb-2 font-bold">Stadt / Gemeinde</label>
                             <div className="relative">
-                                <input 
-                                    type="text" 
-                                    value={city} 
-                                    onChange={e => setCity(e.target.value)} 
-                                    required 
-                                    className="w-full border-b-2 border-stone-100 py-3 text-xl font-bold focus:outline-none focus:border-black transition-all placeholder:text-stone-200" 
-                                    placeholder="z.B. Köln" 
+                                <input
+                                    type="text"
+                                    value={city}
+                                    onChange={handleCityChange}
+                                    onBlur={() => handleBlur('city', city)}
+                                    required
+                                    className={getInputClass('city')}
+                                    placeholder="z.B. Köln"
                                 />
                                 <MapPin className="absolute right-0 top-3 text-stone-300 w-5 h-5" />
                             </div>
+                            <ErrorMessage error={touched.city ? errors.city : undefined} />
                         </div>
-                        <button type="submit" disabled={!name || !city} className="group w-full bg-black text-white h-16 mt-8 flex items-center justify-between px-8 font-bold uppercase tracking-widest hover:bg-stone-800 transition-all disabled:opacity-30 shadow-xl hover:shadow-2xl">
+                        <button type="submit" disabled={!isFormValid()} className="group w-full bg-black text-white h-16 mt-8 flex items-center justify-between px-8 font-bold uppercase tracking-widest hover:bg-stone-800 transition-all disabled:opacity-30 disabled:cursor-not-allowed shadow-xl hover:shadow-2xl">
                             <span>Scan Starten</span>
                             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                         </button>
