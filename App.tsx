@@ -9,10 +9,11 @@ import { LandingPage } from './components/LandingPage';
 import { Dashboard } from './components/Dashboard';
 import { DarkModeToggle } from './components/DarkModeToggle';
 import { LanguageToggle } from './components/LanguageToggle';
+import { NotificationSettings } from './components/NotificationSettings';
 import { ViewState, SchoolProfile, FundingProgram, MatchResult } from './types';
 import { INITIAL_PROFILE, MOCK_FUNDING_PROGRAMS } from './constants';
 import { useToast } from './contexts/ToastContext';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Bell } from 'lucide-react';
 
 const App: React.FC = () => {
   const { t } = useTranslation();
@@ -126,6 +127,13 @@ const App: React.FC = () => {
           <nav className="hidden md:flex items-center gap-1 text-xs font-mono uppercase tracking-wide">
             <LanguageToggle />
             <DarkModeToggle />
+            <button
+                onClick={() => setView(ViewState.NOTIFICATIONS)}
+                className={`relative w-9 h-9 rounded-full flex items-center justify-center bg-stone-100 dark:bg-stone-800 hover:bg-stone-200 dark:hover:bg-stone-700 transition-all duration-300 ${view === ViewState.NOTIFICATIONS ? 'ring-2 ring-black dark:ring-white' : ''}`}
+                aria-label={t('navigation.notifications')}
+            >
+                <Bell className="w-5 h-5 text-stone-600 dark:text-stone-400" />
+            </button>
             <div className="w-px h-4 bg-stone-200 dark:bg-stone-700 mx-2"></div>
             <button
                 onClick={() => setView(ViewState.DASHBOARD)}
@@ -191,6 +199,13 @@ const App: React.FC = () => {
                   <div className="flex items-center gap-2">
                     <LanguageToggle />
                     <DarkModeToggle />
+                    <button
+                      onClick={() => { setView(ViewState.NOTIFICATIONS); setMobileMenuOpen(false); }}
+                      className={`relative w-9 h-9 rounded-full flex items-center justify-center bg-stone-100 dark:bg-stone-800 hover:bg-stone-200 dark:hover:bg-stone-700 transition-all duration-300 ${view === ViewState.NOTIFICATIONS ? 'ring-2 ring-black dark:ring-white' : ''}`}
+                      aria-label={t('navigation.notifications')}
+                    >
+                      <Bell className="w-5 h-5 text-stone-600 dark:text-stone-400" />
+                    </button>
                   </div>
                 </div>
               </div>
@@ -243,10 +258,19 @@ const App: React.FC = () => {
 
           {view === ViewState.WRITER && selectedProgram && (
             <div className="animate-in fade-in slide-in-from-bottom-4 duration-700">
-              <GrantWriter 
-                profile={profile} 
+              <GrantWriter
+                profile={profile}
                 program={selectedProgram}
                 onBack={handleBackToMatch}
+              />
+            </div>
+          )}
+
+          {view === ViewState.NOTIFICATIONS && (
+            <div className="animate-in fade-in slide-in-from-bottom-4 duration-700">
+              <NotificationSettings
+                programs={allPrograms}
+                onBack={handleBackToDashboard}
               />
             </div>
           )}

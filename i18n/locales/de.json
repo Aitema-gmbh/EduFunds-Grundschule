@@ -5,7 +5,9 @@
     "noInstallation": "Keine Installation nötig",
     "viewAllCategories": "Alle Kategorien ansehen",
     "startScan": "Scan Starten",
-    "design": "Design"
+    "design": "Design",
+    "back": "Zurück",
+    "save": "Speichern"
   },
   "navigation": {
     "theProblem": "Das Problem",
@@ -15,6 +17,7 @@
     "profile": "01 Profil",
     "matching": "02 Matching",
     "application": "03 Antrag",
+    "notifications": "Benachrichtigungen",
     "closeMenu": "Menü schließen",
     "openMenu": "Menü öffnen"
   },
@@ -88,5 +91,30 @@
     "toggle": "Sprache wechseln",
     "german": "Deutsch",
     "english": "English"
+  },
+  "notifications": {
+    "title": "Benachrichtigungen",
+    "subtitle": "Fristen-Erinnerungen",
+    "description": "Verpassen Sie nie wieder eine wichtige Frist. Wir erinnern Sie rechtzeitig per E-Mail.",
+    "emailSettings": "E-Mail Einstellungen",
+    "emailLabel": "E-Mail Adresse",
+    "emailPlaceholder": "ihre.email@schule.de",
+    "emailRequired": "Bitte geben Sie eine E-Mail Adresse ein",
+    "invalidEmail": "Bitte geben Sie eine gültige E-Mail Adresse ein",
+    "emailSaved": "E-Mail Adresse gespeichert",
+    "enabled": "Benachrichtigungen aktiviert",
+    "disabled": "Benachrichtigungen deaktiviert",
+    "notificationsOn": "Benachrichtigungen aktiv",
+    "notificationsOff": "Benachrichtigungen inaktiv",
+    "reminderSettings": "Erinnerungs-Einstellungen",
+    "sevenDayReminder": "7 Tage vor Fristablauf erinnern",
+    "oneDayReminder": "1 Tag vor Fristablauf erinnern",
+    "subscribedPrograms": "Abonnierte Programme",
+    "deadline": "Frist",
+    "unsubscribe": "Abbestellen",
+    "unsubscribed": "Programm abbestellt",
+    "upcomingReminders": "Anstehende Erinnerungen",
+    "sevenDaysBefore": "7 Tage vorher",
+    "oneDayBefore": "1 Tag vorher"
   }
 }

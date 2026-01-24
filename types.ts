@@ -6,7 +6,8 @@ export enum ViewState {
   PROFILE = 'PROFILE',
   MATCHING = 'MATCHING',
   WRITER = 'WRITER',
-  RESULT = 'RESULT'
+  RESULT = 'RESULT',
+  NOTIFICATIONS = 'NOTIFICATIONS'
 }
 
 export interface SchoolProfile {
@@ -60,4 +61,23 @@ export interface GeneratedApplication {
   subject: string;
   body: string;
   executiveSummary: string;
+}
+
+export interface NotificationPreferences {
+  email: string;
+  enabled: boolean;
+  reminders: {
+    sevenDays: boolean;
+    oneDay: boolean;
+  };
+  subscribedPrograms: string[]; // Array of program IDs
+}
+
+export interface ScheduledReminder {
+  programId: string;
+  programTitle: string;
+  deadline: string;
+  reminderType: 'seven_days' | 'one_day';
+  scheduledDate: string;
+  sent: boolean;
 }
