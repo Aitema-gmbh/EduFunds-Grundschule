@@ -116,5 +116,31 @@
     "upcomingReminders": "Anstehende Erinnerungen",
     "sevenDaysBefore": "7 Tage vorher",
     "oneDayBefore": "1 Tag vorher"
+  },
+  "storage": {
+    "title": "Datenspeicherung",
+    "subtitle": "Ihre Daten",
+    "description": "Verwalten Sie Ihre gespeicherten Daten und Einstellungen.",
+    "currentUsage": "Aktueller Speicherverbrauch",
+    "usageInfo": "{{used}} von {{available}} verwendet ({{percent}}%)",
+    "clearData": "Alle Daten löschen",
+    "clearDataWarning": "Dies löscht alle gespeicherten Daten einschließlich Ihres Schulprofils, Einstellungen und Cache. Diese Aktion kann nicht rückgängig gemacht werden.",
+    "confirmClear": "Ja, alle Daten löschen",
+    "cancelClear": "Abbrechen",
+    "dataCleared": "Alle Daten wurden gelöscht",
+    "exportData": "Daten exportieren",
+    "exportSuccess": "Daten exportiert",
+    "importData": "Daten importieren",
+    "importSuccess": "Daten importiert",
+    "importError": "Fehler beim Importieren",
+    "offlineStatus": "Offline-Status",
+    "online": "Online",
+    "offline": "Offline",
+    "offlineMode": "Offline-Modus aktiv - einige Funktionen sind eingeschränkt",
+    "lastSync": "Letzte Synchronisation",
+    "syncNow": "Jetzt synchronisieren",
+    "syncSuccess": "Synchronisation erfolgreich",
+    "pendingActions": "Ausstehende Aktionen",
+    "noData": "Keine Daten zum Anzeigen"
   }
 }

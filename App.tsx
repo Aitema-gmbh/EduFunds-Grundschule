@@ -10,10 +10,12 @@ import { Dashboard } from './components/Dashboard';
 import { DarkModeToggle } from './components/DarkModeToggle';
 import { LanguageToggle } from './components/LanguageToggle';
 import { NotificationSettings } from './components/NotificationSettings';
+import { DataSettings } from './components/DataSettings';
 import { ViewState, SchoolProfile, FundingProgram, MatchResult } from './types';
 import { INITIAL_PROFILE, MOCK_FUNDING_PROGRAMS } from './constants';
 import { useToast } from './contexts/ToastContext';
-import { Menu, X, Bell } from 'lucide-react';
+import { storageService } from './services/storageService';
+import { Menu, X, Bell, Database } from 'lucide-react';
 
 const App: React.FC = () => {
   const { t } = useTranslation();
@@ -134,6 +136,13 @@ const App: React.FC = () => {
             >
                 <Bell className="w-5 h-5 text-stone-600 dark:text-stone-400" />
             </button>
+            <button
+                onClick={() => setView(ViewState.DATA_SETTINGS)}
+                className={`relative w-9 h-9 rounded-full flex items-center justify-center bg-stone-100 dark:bg-stone-800 hover:bg-stone-200 dark:hover:bg-stone-700 transition-all duration-300 ${view === ViewState.DATA_SETTINGS ? 'ring-2 ring-black dark:ring-white' : ''}`}
+                aria-label={t('storage.title')}
+            >
+                <Database className="w-5 h-5 text-stone-600 dark:text-stone-400" />
+            </button>
             <div className="w-px h-4 bg-stone-200 dark:bg-stone-700 mx-2"></div>
             <button
                 onClick={() => setView(ViewState.DASHBOARD)}
@@ -206,6 +215,13 @@ const App: React.FC = () => {
                     >
                       <Bell className="w-5 h-5 text-stone-600 dark:text-stone-400" />
                     </button>
+                    <button
+                      onClick={() => { setView(ViewState.DATA_SETTINGS); setMobileMenuOpen(false); }}
+                      className={`relative w-9 h-9 rounded-full flex items-center justify-center bg-stone-100 dark:bg-stone-800 hover:bg-stone-200 dark:hover:bg-stone-700 transition-all duration-300 ${view === ViewState.DATA_SETTINGS ? 'ring-2 ring-black dark:ring-white' : ''}`}
+                      aria-label={t('storage.title')}
+                    >
+                      <Database className="w-5 h-5 text-stone-600 dark:text-stone-400" />
+                    </button>
                   </div>
                 </div>
               </div>
@@ -271,6 +287,18 @@ const App: React.FC = () => {
               <NotificationSettings
                 programs={allPrograms}
                 onBack={handleBackToDashboard}
+              />
+            </div>
+          )}
+
+          {view === ViewState.DATA_SETTINGS && (
+            <div className="animate-in fade-in slide-in-from-bottom-4 duration-700">
+              <DataSettings
+                onBack={handleBackToDashboard}
+                onDataCleared={() => {
+                  setProfile(INITIAL_PROFILE);
+                  setView(ViewState.LANDING);
+                }}
               />
             </div>
           )}

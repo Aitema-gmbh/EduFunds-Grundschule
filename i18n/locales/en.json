@@ -88,5 +88,31 @@
     "toggle": "Switch language",
     "german": "Deutsch",
     "english": "English"
+  },
+  "storage": {
+    "title": "Data Storage",
+    "subtitle": "Your Data",
+    "description": "Manage your saved data and settings.",
+    "currentUsage": "Current Storage Usage",
+    "usageInfo": "{{used}} of {{available}} used ({{percent}}%)",
+    "clearData": "Clear All Data",
+    "clearDataWarning": "This will delete all saved data including your school profile, settings, and cache. This action cannot be undone.",
+    "confirmClear": "Yes, clear all data",
+    "cancelClear": "Cancel",
+    "dataCleared": "All data has been cleared",
+    "exportData": "Export Data",
+    "exportSuccess": "Data exported",
+    "importData": "Import Data",
+    "importSuccess": "Data imported",
+    "importError": "Error importing data",
+    "offlineStatus": "Offline Status",
+    "online": "Online",
+    "offline": "Offline",
+    "offlineMode": "Offline mode active - some features are limited",
+    "lastSync": "Last Sync",
+    "syncNow": "Sync Now",
+    "syncSuccess": "Sync successful",
+    "pendingActions": "Pending Actions",
+    "noData": "No data to display"
   }
 }
