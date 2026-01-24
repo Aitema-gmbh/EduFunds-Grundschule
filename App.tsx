@@ -230,6 +230,13 @@ const App: React.FC = () => {
                     >
                       <BarChart3 className="w-5 h-5 text-stone-600 dark:text-stone-400" />
                     </button>
+                    <button
+                      onClick={() => { setView(ViewState.SETTINGS); setMobileMenuOpen(false); }}
+                      className={`relative w-9 h-9 rounded-full flex items-center justify-center bg-stone-100 dark:bg-stone-800 hover:bg-stone-200 dark:hover:bg-stone-700 transition-all duration-300 ${view === ViewState.SETTINGS ? 'ring-2 ring-black dark:ring-white' : ''}`}
+                      aria-label="Settings"
+                    >
+                      <Settings className="w-5 h-5 text-stone-600 dark:text-stone-400" />
+                    </button>
                   </div>
                 </div>
               </div>
@@ -306,6 +313,27 @@ const App: React.FC = () => {
                 programs={allPrograms}
                 matchedPrograms={matchedPrograms}
                 onBack={handleBackToDashboard}
+              />
+            </div>
+          )}
+
+          {view === ViewState.SETTINGS && (
+            <div className="animate-in fade-in slide-in-from-bottom-4 duration-700">
+              <div className="mb-16 border-b border-stone-200 pb-8">
+                <h2 className="text-4xl md:text-6xl font-semibold tracking-tighter mb-6 leading-[0.9]">
+                  Einstellungen &<br/>
+                  <span className="text-stone-400">Datenverwaltung</span>
+                </h2>
+                <p className="text-lg text-stone-600 font-light max-w-2xl font-serif italic">
+                  Verwalten Sie Ihre lokalen Daten, Offline-Speicher und Synchronisierung.
+                </p>
+              </div>
+              <DataSettings
+                onDataCleared={() => {
+                  setProfile(INITIAL_PROFILE);
+                  setMatchedPrograms([]);
+                  setView(ViewState.LANDING);
+                }}
               />
             </div>
           )}
