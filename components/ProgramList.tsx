@@ -1,9 +1,10 @@
 import React, { useEffect, useState, useMemo, useCallback } from 'react';
 import { FundingProgram, MatchResult, SchoolProfile } from '../types';
 import { matchProgramsWithGemini, searchLiveFunding } from '../services/geminiService';
-import { Loader2, Globe, Clock, Euro, ExternalLink, Sparkles } from 'lucide-react';
+import { Loader2, Globe, Clock, Euro, ExternalLink, Sparkles, Download, FileText, FileDown, Printer } from 'lucide-react';
 import { ProgramListSkeleton } from './Skeleton';
 import { SearchFilter, FilterState } from './SearchFilter';
+import { exportProgramsToCSV, exportProgramsToPDF, printPage } from '../services/exportService';
 
 interface Props {
   profile: SchoolProfile;
@@ -20,6 +21,29 @@ export const ProgramList: React.FC<Props> = ({ profile, onSelectProgram, onBack,
   const [searchingLive, setSearchingLive] = useState(false);
   const [newFoundCount, setNewFoundCount] = useState(0);
   const [activeFilters, setActiveFilters] = useState<FilterState | null>(null);
+  const [exportMenuOpen, setExportMenuOpen] = useState(false);
+  const [isExporting, setIsExporting] = useState(false);
+
+  // Export handlers
+  const handleExportPDF = async () => {
+    setIsExporting(true);
+    try {
+      await exportProgramsToPDF(programsToDisplay, matches, profile);
+    } finally {
+      setIsExporting(false);
+      setExportMenuOpen(false);
+    }
+  };
+
+  const handleExportCSV = () => {
+    exportProgramsToCSV(programsToDisplay, matches);
+    setExportMenuOpen(false);
+  };
+
+  const handlePrint = () => {
+    printPage();
+    setExportMenuOpen(false);
+  };
 
   // Create a map of program IDs to match scores for the SearchFilter component
   const matchScores = useMemo(() => {
@@ -116,7 +140,44 @@ export const ProgramList: React.FC<Props> = ({ profile, onSelectProgram, onBack,
         </div>
         
         <div className="flex gap-4 items-center">
-            <button 
+            {/* Export Menu */}
+            <div className="relative no-print">
+              <button
+                onClick={() => setExportMenuOpen(!exportMenuOpen)}
+                className="group flex items-center gap-2 text-xs font-mono uppercase tracking-wide border border-stone-300 px-4 py-2 hover:bg-stone-100 transition-colors bg-white"
+              >
+                <Download className="w-3 h-3" />
+                Export
+              </button>
+              {exportMenuOpen && (
+                <div className="absolute right-0 mt-2 w-48 bg-white border border-stone-200 shadow-lg z-50 rounded-sm">
+                  <button
+                    onClick={handleExportPDF}
+                    disabled={isExporting}
+                    className="w-full flex items-center gap-3 px-4 py-3 text-sm hover:bg-stone-50 transition-colors text-left"
+                  >
+                    <FileDown className="w-4 h-4 text-red-500" />
+                    {isExporting ? 'Exportiere...' : 'Als PDF speichern'}
+                  </button>
+                  <button
+                    onClick={handleExportCSV}
+                    className="w-full flex items-center gap-3 px-4 py-3 text-sm hover:bg-stone-50 transition-colors text-left"
+                  >
+                    <FileText className="w-4 h-4 text-green-500" />
+                    Als CSV exportieren
+                  </button>
+                  <div className="border-t border-stone-100"></div>
+                  <button
+                    onClick={handlePrint}
+                    className="w-full flex items-center gap-3 px-4 py-3 text-sm hover:bg-stone-50 transition-colors text-left"
+                  >
+                    <Printer className="w-4 h-4 text-blue-500" />
+                    Seite drucken
+                  </button>
+                </div>
+              )}
+            </div>
+            <button
                 onClick={handleLiveSearch}
                 disabled={searchingLive}
                 className="group flex items-center gap-2 text-xs font-mono uppercase tracking-wide border border-stone-300 px-4 py-2 hover:bg-black hover:text-white hover:border-black transition-colors bg-white"

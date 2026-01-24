@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { 
-  FileText, 
-  CheckCircle2, 
-  Clock, 
-  TrendingUp, 
-  Calendar, 
-  Bell, 
+import {
+  FileText,
+  CheckCircle2,
+  Clock,
+  TrendingUp,
+  Calendar,
+  Bell,
   ArrowRight,
   Target,
   Euro,
@@ -13,14 +13,22 @@ import {
   Sparkles,
   ChevronRight,
   AlertCircle,
-  Zap
+  Zap,
+  Download,
+  Printer,
+  FileDown
 } from 'lucide-react';
-import { FundingProgram, SchoolProfile } from '../types';
+import { FundingProgram, SchoolProfile, MatchResult } from '../types';
+import {
+  exportDashboardToPDF,
+  exportProgramsToCSV,
+  printPage
+} from '../services/exportService';
 
 interface DashboardProps {
   profile: SchoolProfile;
   programs: FundingProgram[];
-  matchedPrograms: { programId: string; score: number }[];
+  matchedPrograms: MatchResult[];
   onSelectProgram?: (program: FundingProgram) => void;
   onNavigate?: (view: string) => void;
 }
@@ -202,11 +210,34 @@ export const Dashboard: React.FC<DashboardProps> = ({
   onNavigate
 }) => {
   const [currentTime, setCurrentTime] = useState(new Date());
+  const [exportMenuOpen, setExportMenuOpen] = useState(false);
+  const [isExporting, setIsExporting] = useState(false);
 
   useEffect(() => {
     const timer = setInterval(() => setCurrentTime(new Date()), 60000);
     return () => clearInterval(timer);
   }, []);
+
+  // Export handlers
+  const handleExportPDF = async () => {
+    setIsExporting(true);
+    try {
+      await exportDashboardToPDF(profile, programs, matchedPrograms);
+    } finally {
+      setIsExporting(false);
+      setExportMenuOpen(false);
+    }
+  };
+
+  const handleExportCSV = () => {
+    exportProgramsToCSV(programs, matchedPrograms);
+    setExportMenuOpen(false);
+  };
+
+  const handlePrint = () => {
+    printPage();
+    setExportMenuOpen(false);
+  };
 
   // Calculate stats
   const totalPrograms = programs.length;
@@ -283,9 +314,48 @@ export const Dashboard: React.FC<DashboardProps> = ({
     <div className="max-w-7xl mx-auto animate-in fade-in slide-in-from-bottom-4 duration-700">
       {/* Header */}
       <div className="mb-12 border-b border-stone-200 pb-8">
-        <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-stone-400 mb-3">
-          <Sparkles className="w-3 h-3" />
-          Dashboard
+        <div className="flex items-center justify-between mb-3">
+          <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-stone-400">
+            <Sparkles className="w-3 h-3" />
+            Dashboard
+          </div>
+          {/* Export Menu */}
+          <div className="relative no-print">
+            <button
+              onClick={() => setExportMenuOpen(!exportMenuOpen)}
+              className="flex items-center gap-2 px-3 py-1.5 text-xs font-mono uppercase tracking-wide border border-stone-200 hover:border-stone-400 hover:bg-stone-50 transition-colors rounded-sm"
+            >
+              <Download className="w-3 h-3" />
+              Export
+            </button>
+            {exportMenuOpen && (
+              <div className="absolute right-0 mt-2 w-48 bg-white border border-stone-200 shadow-lg z-50 rounded-sm">
+                <button
+                  onClick={handleExportPDF}
+                  disabled={isExporting}
+                  className="w-full flex items-center gap-3 px-4 py-3 text-sm hover:bg-stone-50 transition-colors text-left"
+                >
+                  <FileDown className="w-4 h-4 text-red-500" />
+                  {isExporting ? 'Exportiere...' : 'Als PDF speichern'}
+                </button>
+                <button
+                  onClick={handleExportCSV}
+                  className="w-full flex items-center gap-3 px-4 py-3 text-sm hover:bg-stone-50 transition-colors text-left"
+                >
+                  <FileText className="w-4 h-4 text-green-500" />
+                  Als CSV exportieren
+                </button>
+                <div className="border-t border-stone-100"></div>
+                <button
+                  onClick={handlePrint}
+                  className="w-full flex items-center gap-3 px-4 py-3 text-sm hover:bg-stone-50 transition-colors text-left"
+                >
+                  <Printer className="w-4 h-4 text-blue-500" />
+                  Seite drucken
+                </button>
+              </div>
+            )}
+          </div>
         </div>
         <h1 className="text-4xl md:text-5xl font-bold tracking-tighter mb-4">
           {greeting()}, <br />
