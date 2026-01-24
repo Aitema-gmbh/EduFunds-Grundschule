@@ -23,6 +23,7 @@ export interface SchoolProfile {
   // Deep Data
   address?: string;
   email?: string;
+  phone?: string;
   teacherCount?: number;
   awards?: string[]; // e.g. "Schule ohne Rassismus"
   partners?: string[]; // e.g. "Musikschule XY"

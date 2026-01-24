@@ -185,6 +185,7 @@ export const validateSchoolProfile = (profile: {
   studentCount?: number;
   socialIndex?: number;
   email?: string;
+  phone?: string;
   website?: string;
 }): FormErrors => {
   const errors: FormErrors = {};
@@ -220,6 +221,12 @@ export const validateSchoolProfile = (profile: {
   if (profile.email) {
     const emailResult = validators.email(profile.email);
     if (!emailResult.isValid) errors.email = emailResult.error;
+  }
+
+  // Phone validation (optional)
+  if (profile.phone) {
+    const phoneResult = validators.phone(profile.phone);
+    if (!phoneResult.isValid) errors.phone = phoneResult.error;
   }
 
   // Website validation (optional)

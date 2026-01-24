@@ -3,7 +3,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { SchoolProfile } from '../types';
 import { ArrowRight, Globe, Layout, Users, Wand2, RefreshCw, Loader2, MapPin, Award, Mail, Phone, AlertCircle } from 'lucide-react';
 import { analyzeSchoolWithGemini } from '../services/geminiService';
-import { validateSchoolProfile, FormErrors, hasErrors, validators } from '../services/validationService';
+import { validateSchoolProfile, FormErrors, hasErrors, validators, inputMasks } from '../services/validationService';
 
 interface Props {
   profile: SchoolProfile;
@@ -74,6 +74,12 @@ export const SchoolProfileForm: React.FC<Props> = ({ profile, onSave }) => {
           error = 'Schülerzahl muss größer als 0 sein';
         }
         break;
+      case 'phone':
+        if (value) {
+          const phoneResult = validators.phone(value as string);
+          error = phoneResult.error;
+        }
+        break;
     }
 
     setErrors(prev => ({ ...prev, [name]: error }));
@@ -81,7 +87,14 @@ export const SchoolProfileForm: React.FC<Props> = ({ profile, onSave }) => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
-    const processedValue = name === 'studentCount' || name === 'socialIndex' || name === 'teacherCount' ? Number(value) : value;
+    let processedValue: string | number = value;
+
+    // Apply input masks for formatted fields
+    if (name === 'phone') {
+      processedValue = inputMasks.phone(value);
+    } else if (name === 'studentCount' || name === 'socialIndex' || name === 'teacherCount') {
+      processedValue = Number(value);
+    }
 
     setFormData(prev => ({
       ...prev,
@@ -252,6 +265,24 @@ export const SchoolProfileForm: React.FC<Props> = ({ profile, onSave }) => {
                             <input type="text" name="website" value={formData.website || ''} onChange={handleChange} onBlur={handleBlur} className={getInputClass('website', 'w-full bg-transparent border-b py-2 text-sm font-mono text-blue-600 focus:outline-none transition-colors')} />
                         </div>
                         <ErrorMessage error={touched.website ? errors.website : undefined} />
+                    </div>
+                    <div className="grid grid-cols-2 gap-4">
+                        <div className="group">
+                            <label className="block text-xs font-mono text-stone-400 mb-1 uppercase">E-Mail</label>
+                            <div className="flex items-center gap-2">
+                                <Mail className="w-4 h-4 text-stone-300" />
+                                <input type="email" name="email" value={formData.email || ''} onChange={handleChange} onBlur={handleBlur} placeholder="schule@stadt.de" className={getInputClass('email', 'w-full bg-transparent border-b py-2 text-sm font-mono focus:outline-none transition-colors')} />
+                            </div>
+                            <ErrorMessage error={touched.email ? errors.email : undefined} />
+                        </div>
+                        <div className="group">
+                            <label className="block text-xs font-mono text-stone-400 mb-1 uppercase">Telefon</label>
+                            <div className="flex items-center gap-2">
+                                <Phone className="w-4 h-4 text-stone-300" />
+                                <input type="tel" name="phone" value={formData.phone || ''} onChange={handleChange} onBlur={handleBlur} placeholder="0221 123 4567" className={getInputClass('phone', 'w-full bg-transparent border-b py-2 text-sm font-mono focus:outline-none transition-colors')} />
+                            </div>
+                            <ErrorMessage error={touched.phone ? errors.phone : undefined} />
+                        </div>
                     </div>
                 </div>
             </div>
