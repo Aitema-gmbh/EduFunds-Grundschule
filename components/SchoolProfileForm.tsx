@@ -1,9 +1,10 @@
 
 import React, { useState, useEffect, useCallback } from 'react';
 import { SchoolProfile } from '../types';
-import { ArrowRight, Globe, Layout, Users, Wand2, RefreshCw, Loader2, MapPin, Award, Mail, Phone, AlertCircle } from 'lucide-react';
+import { ArrowRight, Globe, Layout, Users, Wand2, RefreshCw, Loader2, MapPin, Award, Mail, Phone, AlertCircle, Download, FileText, FileDown, Printer } from 'lucide-react';
 import { analyzeSchoolWithGemini } from '../services/geminiService';
 import { validateSchoolProfile, FormErrors, hasErrors, validators } from '../services/validationService';
+import { exportProfileToCSV, exportProfileToPDF, printPage } from '../services/exportService';
 
 interface Props {
   profile: SchoolProfile;
@@ -35,6 +36,29 @@ export const SchoolProfileForm: React.FC<Props> = ({ profile, onSave }) => {
   const [isReanalyzing, setIsReanalyzing] = useState(false);
   const [errors, setErrors] = useState<FormErrors>({});
   const [touched, setTouched] = useState<{ [key: string]: boolean }>({});
+  const [exportMenuOpen, setExportMenuOpen] = useState(false);
+  const [isExporting, setIsExporting] = useState(false);
+
+  // Export handlers
+  const handleExportPDF = async () => {
+    setIsExporting(true);
+    try {
+      await exportProfileToPDF(formData);
+    } finally {
+      setIsExporting(false);
+      setExportMenuOpen(false);
+    }
+  };
+
+  const handleExportCSV = () => {
+    exportProfileToCSV(formData);
+    setExportMenuOpen(false);
+  };
+
+  const handlePrint = () => {
+    printPage();
+    setExportMenuOpen(false);
+  };
 
   useEffect(() => {
       setFormData(profile);
@@ -171,6 +195,46 @@ export const SchoolProfileForm: React.FC<Props> = ({ profile, onSave }) => {
 
   return (
     <div className="max-w-6xl">
+        {/* Export Menu */}
+        <div className="flex justify-end mb-6 no-print">
+          <div className="relative">
+            <button
+              onClick={() => setExportMenuOpen(!exportMenuOpen)}
+              className="group flex items-center gap-2 text-xs font-mono uppercase tracking-wide border border-stone-300 px-4 py-2 hover:bg-stone-100 transition-colors bg-white"
+            >
+              <Download className="w-3 h-3" />
+              Profil exportieren
+            </button>
+            {exportMenuOpen && (
+              <div className="absolute right-0 mt-2 w-48 bg-white border border-stone-200 shadow-lg z-50 rounded-sm">
+                <button
+                  onClick={handleExportPDF}
+                  disabled={isExporting}
+                  className="w-full flex items-center gap-3 px-4 py-3 text-sm hover:bg-stone-50 transition-colors text-left"
+                >
+                  <FileDown className="w-4 h-4 text-red-500" />
+                  {isExporting ? 'Exportiere...' : 'Als PDF speichern'}
+                </button>
+                <button
+                  onClick={handleExportCSV}
+                  className="w-full flex items-center gap-3 px-4 py-3 text-sm hover:bg-stone-50 transition-colors text-left"
+                >
+                  <FileText className="w-4 h-4 text-green-500" />
+                  Als CSV exportieren
+                </button>
+                <div className="border-t border-stone-100"></div>
+                <button
+                  onClick={handlePrint}
+                  className="w-full flex items-center gap-3 px-4 py-3 text-sm hover:bg-stone-50 transition-colors text-left"
+                >
+                  <Printer className="w-4 h-4 text-blue-500" />
+                  Seite drucken
+                </button>
+              </div>
+            )}
+          </div>
+        </div>
+
         {/* AI Found Badge */}
         {(formData.missionStatement || formData.awards?.length! > 0) && (
             <div className="bg-stone-50 border-l-4 border-black p-6 mb-12 shadow-sm flex gap-5 relative overflow-hidden group animate-in fade-in slide-in-from-top-2">

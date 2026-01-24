@@ -342,6 +342,158 @@ export const exportDashboardToPDF = async (
   doc.save(`dashboard_uebersicht_${formatDate(new Date()).replace(/\./g, '-')}.pdf`);
 };
 
+// Export school profile to PDF
+export const exportProfileToPDF = async (profile: SchoolProfile): Promise<void> => {
+  const { jsPDF } = await import('jspdf');
+  const doc = new jsPDF();
+
+  const primaryColor: [number, number, number] = [41, 37, 36];
+  const secondaryColor: [number, number, number] = [120, 113, 108];
+
+  let yPos = 20;
+  const pageWidth = doc.internal.pageSize.getWidth();
+  const margin = 20;
+  const contentWidth = pageWidth - 2 * margin;
+
+  // Header
+  doc.setFontSize(24);
+  doc.setTextColor(...primaryColor);
+  doc.text('Schulprofil', margin, yPos);
+
+  yPos += 10;
+  doc.setFontSize(10);
+  doc.setTextColor(...secondaryColor);
+  doc.text(`Erstellt am: ${formatDate(new Date())}`, margin, yPos);
+
+  yPos += 15;
+  doc.setDrawColor(...primaryColor);
+  doc.line(margin, yPos, pageWidth - margin, yPos);
+  yPos += 15;
+
+  // School basic info
+  doc.setFontSize(14);
+  doc.setTextColor(...primaryColor);
+  doc.text('Institutionsdaten', margin, yPos);
+
+  yPos += 10;
+  doc.setFontSize(11);
+  doc.text(profile.name, margin, yPos);
+  yPos += 6;
+  doc.setFontSize(10);
+  doc.setTextColor(...secondaryColor);
+  doc.text(`${profile.location} (${profile.state})`, margin, yPos);
+
+  if (profile.address) {
+    yPos += 5;
+    doc.text(`Adresse: ${profile.address}`, margin, yPos);
+  }
+  if (profile.website) {
+    yPos += 5;
+    doc.text(`Website: ${profile.website}`, margin, yPos);
+  }
+  if (profile.email) {
+    yPos += 5;
+    doc.text(`E-Mail: ${profile.email}`, margin, yPos);
+  }
+
+  yPos += 15;
+
+  // Metrics
+  doc.setFontSize(14);
+  doc.setTextColor(...primaryColor);
+  doc.text('Schul-Metriken', margin, yPos);
+
+  yPos += 10;
+  doc.setFontSize(10);
+  doc.setTextColor(...secondaryColor);
+  doc.text(`Schülerzahl: ${profile.studentCount}`, margin, yPos);
+  yPos += 5;
+  if (profile.teacherCount) {
+    doc.text(`Lehrkräfte: ${profile.teacherCount}`, margin, yPos);
+    yPos += 5;
+  }
+  doc.text(`Sozialindex: ${profile.socialIndex} (1-5 Skala)`, margin, yPos);
+
+  yPos += 10;
+
+  // Focus areas
+  if (profile.focusAreas.length > 0) {
+    doc.setFontSize(11);
+    doc.setTextColor(...primaryColor);
+    doc.text('Pädagogische Schwerpunkte:', margin, yPos);
+    yPos += 6;
+    doc.setFontSize(10);
+    doc.setTextColor(...secondaryColor);
+    const focusText = profile.focusAreas.join(', ');
+    const focusLines = doc.splitTextToSize(focusText, contentWidth);
+    doc.text(focusLines, margin, yPos);
+    yPos += focusLines.length * 5 + 5;
+  }
+
+  // Awards
+  if (profile.awards && profile.awards.length > 0) {
+    doc.setFontSize(11);
+    doc.setTextColor(...primaryColor);
+    doc.text('Auszeichnungen:', margin, yPos);
+    yPos += 6;
+    doc.setFontSize(10);
+    doc.setTextColor(...secondaryColor);
+    doc.text(profile.awards.join(', '), margin, yPos);
+    yPos += 10;
+  }
+
+  // Partners
+  if (profile.partners && profile.partners.length > 0) {
+    doc.setFontSize(11);
+    doc.setTextColor(...primaryColor);
+    doc.text('Kooperationspartner:', margin, yPos);
+    yPos += 6;
+    doc.setFontSize(10);
+    doc.setTextColor(...secondaryColor);
+    doc.text(profile.partners.join(', '), margin, yPos);
+    yPos += 10;
+  }
+
+  // Mission statement
+  if (profile.missionStatement) {
+    yPos += 5;
+    doc.setFontSize(14);
+    doc.setTextColor(...primaryColor);
+    doc.text('Pädagogisches Leitbild', margin, yPos);
+    yPos += 8;
+    doc.setFontSize(10);
+    doc.setTextColor(...secondaryColor);
+    const missionLines = doc.splitTextToSize(profile.missionStatement, contentWidth);
+    doc.text(missionLines, margin, yPos);
+    yPos += missionLines.length * 5 + 5;
+  }
+
+  // Needs description
+  if (profile.needsDescription) {
+    yPos += 5;
+    doc.setFontSize(14);
+    doc.setTextColor(...primaryColor);
+    doc.text('Aktueller Bedarf', margin, yPos);
+    yPos += 8;
+    doc.setFontSize(10);
+    doc.setTextColor(...secondaryColor);
+    const needsLines = doc.splitTextToSize(profile.needsDescription, contentWidth);
+    doc.text(needsLines, margin, yPos);
+  }
+
+  // Footer
+  doc.setFontSize(8);
+  doc.setTextColor(...secondaryColor);
+  doc.text(
+    'EduFunds.org - Fördermittel leicht gemacht',
+    pageWidth / 2,
+    doc.internal.pageSize.getHeight() - 10,
+    { align: 'center' }
+  );
+
+  doc.save(`schulprofil_${formatDate(new Date()).replace(/\./g, '-')}.pdf`);
+};
+
 // Trigger browser print dialog
 export const printPage = (): void => {
   window.print();
