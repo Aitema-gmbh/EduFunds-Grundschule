@@ -6,6 +6,7 @@ import {
   Download,
   Printer,
   FileText,
+  FileDown,
   Calendar,
   Target,
   Award,
@@ -14,7 +15,7 @@ import {
   ChevronLeft
 } from 'lucide-react';
 import { FundingProgram, SchoolProfile, MatchResult } from '../types';
-import { exportProgramsToCSV, printPage, formatDate } from '../services/exportService';
+import { exportProgramsToCSV, exportDashboardToPDF, printPage, formatDate } from '../services/exportService';
 
 interface AnalyticsDashboardProps {
   profile: SchoolProfile;
@@ -496,6 +497,13 @@ export const AnalyticsDashboard: React.FC<AnalyticsDashboardProps> = ({
             </button>
             {exportMenuOpen && (
               <div className="absolute right-0 mt-2 w-48 bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-700 shadow-lg z-50 rounded-sm">
+                <button
+                  onClick={() => { exportDashboardToPDF(profile, programs, matchedPrograms); setExportMenuOpen(false); }}
+                  className="w-full flex items-center gap-3 px-4 py-3 text-sm hover:bg-stone-50 dark:hover:bg-stone-800 transition-colors text-left dark:text-white"
+                >
+                  <FileDown className="w-4 h-4 text-red-500" />
+                  Dashboard als PDF
+                </button>
                 <button
                   onClick={exportAnalyticsToCSV}
                   className="w-full flex items-center gap-3 px-4 py-3 text-sm hover:bg-stone-50 dark:hover:bg-stone-800 transition-colors text-left dark:text-white"
