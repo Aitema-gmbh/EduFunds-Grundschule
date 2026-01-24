@@ -88,24 +88,76 @@ export const GrantWriter: React.FC<Props> = ({ profile, program, onBack }) => {
   const handleDownloadPdf = () => {
     if (!generatedApp) return;
 
+    // Generate reference number: ANT-YYYYMMDD-PROGRAMID-VX
+    const today = new Date();
+    const dateStr = today.toISOString().slice(0, 10).replace(/-/g, '');
+    const referenceNumber = `ANT-${dateStr}-${program.id.toUpperCase()}-V${version}`;
+
     const htmlContent = marked.parse(generatedApp.body.replace(new RegExp('^Betreff:.*\\n'), ''));
     // @ts-ignore
     const content = htmlToPdfmake(htmlContent);
 
     const docDefinition = {
         content: [
-            { text: `${profile.name} • ${profile.address} • ${profile.location}`, style: 'sender' },
+            // Header with school logo placeholder and school info
+            {
+                columns: [
+                    {
+                        // School logo placeholder (can be replaced with actual logo)
+                        stack: [
+                            { canvas: [{ type: 'rect', x: 0, y: 0, w: 60, h: 60, color: '#f0f0f0', lineColor: '#cccccc', lineWidth: 1 }] },
+                            { text: 'SCHULLOGO', fontSize: 6, color: '#999999', alignment: 'center', margin: [0, -35, 0, 0] }
+                        ],
+                        width: 70
+                    },
+                    {
+                        stack: [
+                            { text: profile.name, fontSize: 14, bold: true },
+                            { text: profile.address || '', fontSize: 9, color: '#666666' },
+                            { text: profile.location, fontSize: 9, color: '#666666' },
+                            { text: profile.email || '', fontSize: 9, color: '#666666', margin: [0, 2, 0, 0] }
+                        ],
+                        margin: [10, 0, 0, 0]
+                    },
+                    {
+                        stack: [
+                            { text: 'Aktenzeichen / Ref.:', fontSize: 8, color: '#666666' },
+                            { text: referenceNumber, fontSize: 9, bold: true },
+                            { text: '', margin: [0, 5, 0, 0] },
+                            { text: 'Datum:', fontSize: 8, color: '#666666' },
+                            { text: today.toLocaleDateString('de-DE'), fontSize: 9 }
+                        ],
+                        alignment: 'right',
+                        width: 120
+                    }
+                ],
+                margin: [0, 0, 0, 30]
+            },
+            // Horizontal line separator
+            { canvas: [{ type: 'line', x1: 0, y1: 0, x2: 515, y2: 0, lineWidth: 1, lineColor: '#cccccc' }], margin: [0, 0, 0, 20] },
+            // Recipient
             { text: program.provider, style: 'recipient' },
-            { text: 'Förderabteilung / Vergabe', style: 'recipient' },
-            { text: program.address || '[Adresse des Trägers]', style: 'recipient' },
-            { text: new Date().toLocaleDateString('de-DE'), style: 'date' },
+            { text: 'Förderabteilung / Vergabe', style: 'recipientSub' },
+            { text: program.address || '[Adresse des Trägers]', style: 'recipientSub', margin: [0, 0, 0, 30] },
+            // Subject line
             { text: generatedApp.subject, style: 'subject' },
+            // Body content
             ...content,
+            // Signature
             { text: 'Mit freundlichen Grüßen,', style: 'signature' },
             { text: '____________________', style: 'signature' },
             { text: 'Schulleitung', style: 'signature' },
             { text: profile.name, style: 'signature' },
         ],
+        footer: function(currentPage: number, pageCount: number) {
+            return {
+                columns: [
+                    { text: `Ref: ${referenceNumber}`, fontSize: 8, color: '#999999' },
+                    { text: `Seite ${currentPage} von ${pageCount}`, fontSize: 8, color: '#999999', alignment: 'right' }
+                ],
+                margin: [40, 10, 40, 0]
+            };
+        },
         styles: {
             sender: {
                 fontSize: 8,
@@ -114,7 +166,11 @@ export const GrantWriter: React.FC<Props> = ({ profile, program, onBack }) => {
             recipient: {
                 fontSize: 11,
                 bold: true,
-                margin: [0, 0, 0, 10]
+                margin: [0, 0, 0, 2]
+            },
+            recipientSub: {
+                fontSize: 10,
+                margin: [0, 0, 0, 2]
             },
             date: {
                 alignment: 'right',
@@ -131,9 +187,10 @@ export const GrantWriter: React.FC<Props> = ({ profile, program, onBack }) => {
         },
         defaultStyle: {
             fontSize: 11
-        }
+        },
+        pageMargins: [40, 40, 40, 60]
     };
-    
+
     pdfMake.createPdf(docDefinition).download(`Antrag_${program.id}_v${version}.pdf`);
     
     setDownloadSuccess(true);
