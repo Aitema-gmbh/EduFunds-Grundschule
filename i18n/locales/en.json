@@ -1,0 +1,92 @@
+{
+  "common": {
+    "startNow": "Get Started",
+    "freeTest": "Try Free",
+    "noInstallation": "No installation required",
+    "viewAllCategories": "View all categories",
+    "startScan": "Start Scan",
+    "design": "Design"
+  },
+  "navigation": {
+    "theProblem": "The Problem",
+    "howItWorks": "How it Works",
+    "examples": "Examples",
+    "dashboard": "Dashboard",
+    "profile": "01 Profile",
+    "matching": "02 Matching",
+    "application": "03 Application",
+    "closeMenu": "Close menu",
+    "openMenu": "Open menu"
+  },
+  "hero": {
+    "badge": "Exclusively for Elementary Schools",
+    "title1": "Access Funding.",
+    "title2": "Without the Paperwork.",
+    "description": "We automate the search and application process for funding. So you can focus on what matters:",
+    "theChildren": "The Children."
+  },
+  "problem": {
+    "statusQuoTitle": "The Status Quo",
+    "statusQuoQuote": "\"I would love to, but...\"",
+    "statusQuoReason1": "No time for hours of research in official gazettes.",
+    "statusQuoReason2": "Missed deadlines for \"Head Start\" or \"DigitalPakt\" programs.",
+    "statusQuoReason3": "Wording doesn't sound \"official\" enough.",
+    "solutionTitle": "With EduFunds.org",
+    "solutionQuote": "Funding on Autopilot.",
+    "solutionFeature1Title": "Automatic Search:",
+    "solutionFeature1Desc": "We find programs that match your school exactly.",
+    "solutionFeature2Title": "Deadline Radar:",
+    "solutionFeature2Desc": "Never let money expire again.",
+    "solutionFeature3Title": "AI Writer:",
+    "solutionFeature3Desc": "Finished applications in 30 seconds. Standard compliant."
+  },
+  "howItWorks": {
+    "title": "How the Process Works",
+    "description": "You provide the idea (e.g., \"New school garden\"). Our platform handles the rest – from research to the ready-to-sign PDF.",
+    "step1Title": "Scan School Profile",
+    "step1Desc": "Simply enter your school's name. We automatically load mission statement and data from the web.",
+    "step2Title": "Matching & Selection",
+    "step2Desc": "We filter thousands of programs (federal, state, EU, foundations) and show only those that truly fit.",
+    "step3Title": "Generation",
+    "step3Desc": "Our AI writes the application text, provides pedagogical justification, and formats everything to DIN 5008.",
+    "yourSchool": "Your School",
+    "finishedApplication": "Finished Application"
+  },
+  "examples": {
+    "title": "What You Can Finance",
+    "description": "Typical projects successfully funded through EduFunds.",
+    "greenClassroomTitle": "Green Classroom",
+    "greenClassroomDesc": "School garden, raised beds, or schoolyard de-paving.",
+    "makerspaceTitle": "Makerspace & IT",
+    "makerspaceDesc": "Tablets, robotics sets, or media room setup.",
+    "fulltimeTitle": "Full-Day & After School",
+    "fulltimeDesc": "Furniture for quiet rooms, play equipment, or kitchen facilities.",
+    "upTo": "Up to",
+    "fullQuote": "100% Rate",
+    "states": "States"
+  },
+  "footer": {
+    "tagline": "The digital funding department for Germany's elementary schools.",
+    "madeInGermany": "Made in Germany. Hosted in EU.",
+    "imprint": "Legal Notice",
+    "privacy": "Privacy Policy",
+    "contact": "Contact",
+    "readyTitle": "Ready for your first application?",
+    "readyDesc": "Start the free analysis of your school now.",
+    "ticker1": "GGS Mühlenbach: €50,000 for Head Start approved",
+    "ticker2": "Catholic School Cologne: New after-school room financed",
+    "ticker3": "Elementary School Berlin-Mitte: Digital package retrieved"
+  },
+  "profile": {
+    "title": "Data Base",
+    "subtitle": "School Profile.",
+    "description": "\"Precise data leads to precise applications. We have already extracted initial information from the web.\"",
+    "savedSuccess": "Profile saved successfully!",
+    "loadedSuccess": "School profile loaded successfully!"
+  },
+  "language": {
+    "toggle": "Switch language",
+    "german": "Deutsch",
+    "english": "English"
+  }
+}

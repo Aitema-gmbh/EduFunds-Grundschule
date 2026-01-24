@@ -1,5 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { SchoolProfileForm } from './components/SchoolProfileForm';
 import { ProgramList } from './components/ProgramList';
 import { GrantWriter } from './components/GrantWriter';
@@ -7,12 +8,14 @@ import { LoginScreen } from './components/LoginScreen';
 import { LandingPage } from './components/LandingPage';
 import { Dashboard } from './components/Dashboard';
 import { DarkModeToggle } from './components/DarkModeToggle';
+import { LanguageToggle } from './components/LanguageToggle';
 import { ViewState, SchoolProfile, FundingProgram, MatchResult } from './types';
 import { INITIAL_PROFILE, MOCK_FUNDING_PROGRAMS } from './constants';
 import { useToast } from './contexts/ToastContext';
 import { Menu, X } from 'lucide-react';
 
 const App: React.FC = () => {
+  const { t } = useTranslation();
   const [view, setView] = useState<ViewState>(ViewState.LANDING);
   const [profile, setProfile] = useState<SchoolProfile>(INITIAL_PROFILE);
   const [selectedProgram, setSelectedProgram] = useState<FundingProgram | null>(null);
@@ -53,14 +56,14 @@ const App: React.FC = () => {
     setProfile(extractedProfile);
     localStorage.setItem('sf_profile', JSON.stringify(extractedProfile));
     setView(ViewState.PROFILE);
-    showToast('Schulprofil erfolgreich geladen!', 'success');
+    showToast(t('profile.loadedSuccess'), 'success');
   }
 
   const handleSaveProfile = (updatedProfile: SchoolProfile) => {
     setProfile(updatedProfile);
     localStorage.setItem('sf_profile', JSON.stringify(updatedProfile));
     setView(ViewState.DASHBOARD);
-    showToast('Profil erfolgreich gespeichert!', 'success');
+    showToast(t('profile.savedSuccess'), 'success');
   };
 
   const handleNavigate = (viewName: string) => {
@@ -110,7 +113,7 @@ const App: React.FC = () => {
           <button
             className="md:hidden p-2 hover:bg-stone-100 dark:hover:bg-stone-800 rounded-sm transition-colors focus-ring"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label={mobileMenuOpen ? 'Menü schließen' : 'Menü öffnen'}
+            aria-label={mobileMenuOpen ? t('navigation.closeMenu') : t('navigation.openMenu')}
           >
             {mobileMenuOpen ? (
               <X className="w-5 h-5 dark:text-white" />
@@ -121,34 +124,35 @@ const App: React.FC = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-1 text-xs font-mono uppercase tracking-wide">
+            <LanguageToggle />
             <DarkModeToggle />
             <div className="w-px h-4 bg-stone-200 dark:bg-stone-700 mx-2"></div>
             <button
                 onClick={() => setView(ViewState.DASHBOARD)}
                 className={`px-4 py-1.5 rounded-full transition-all btn-interactive focus-ring ${view === ViewState.DASHBOARD ? 'bg-black dark:bg-white text-white dark:text-black' : 'text-slate-400 hover:text-black dark:hover:text-white'}`}
             >
-                Dashboard
+                {t('navigation.dashboard')}
             </button>
             <div className="w-4 h-px bg-stone-300 dark:bg-stone-700"></div>
             <button
                 onClick={() => setView(ViewState.PROFILE)}
                 className={`px-4 py-1.5 rounded-full transition-all btn-interactive focus-ring ${view === ViewState.PROFILE ? 'bg-black dark:bg-white text-white dark:text-black' : 'text-slate-400 hover:text-black dark:hover:text-white'}`}
             >
-                01 Profil
+                {t('navigation.profile')}
             </button>
             <div className="w-4 h-px bg-stone-300 dark:bg-stone-700"></div>
             <button
                 onClick={() => setView(ViewState.MATCHING)}
                 className={`px-4 py-1.5 rounded-full transition-all btn-interactive focus-ring ${view === ViewState.MATCHING ? 'bg-black dark:bg-white text-white dark:text-black' : 'text-slate-400 hover:text-black dark:hover:text-white'}`}
             >
-                02 Matching
+                {t('navigation.matching')}
             </button>
             <div className="w-4 h-px bg-stone-300 dark:bg-stone-700"></div>
             <button
                 disabled={view !== ViewState.WRITER}
                 className={`px-4 py-1.5 rounded-full transition-all ${view === ViewState.WRITER ? 'bg-black dark:bg-white text-white dark:text-black' : 'text-slate-400 hover:text-black dark:hover:text-white disabled:opacity-50'}`}
             >
-                03 Antrag
+                {t('navigation.application')}
             </button>
           </nav>
         </div>
@@ -161,30 +165,33 @@ const App: React.FC = () => {
                 onClick={() => { setView(ViewState.DASHBOARD); setMobileMenuOpen(false); }}
                 className={`w-full text-left px-4 py-3 rounded-sm transition-all text-sm font-mono uppercase tracking-wide focus-ring ${view === ViewState.DASHBOARD ? 'bg-black dark:bg-white text-white dark:text-black' : 'text-stone-600 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-800'}`}
               >
-                Dashboard
+                {t('navigation.dashboard')}
               </button>
               <button
                 onClick={() => { setView(ViewState.PROFILE); setMobileMenuOpen(false); }}
                 className={`w-full text-left px-4 py-3 rounded-sm transition-all text-sm font-mono uppercase tracking-wide focus-ring ${view === ViewState.PROFILE ? 'bg-black dark:bg-white text-white dark:text-black' : 'text-stone-600 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-800'}`}
               >
-                01 Profil
+                {t('navigation.profile')}
               </button>
               <button
                 onClick={() => { setView(ViewState.MATCHING); setMobileMenuOpen(false); }}
                 className={`w-full text-left px-4 py-3 rounded-sm transition-all text-sm font-mono uppercase tracking-wide focus-ring ${view === ViewState.MATCHING ? 'bg-black dark:bg-white text-white dark:text-black' : 'text-stone-600 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-800'}`}
               >
-                02 Matching
+                {t('navigation.matching')}
               </button>
               <button
                 disabled={view !== ViewState.WRITER}
                 className={`w-full text-left px-4 py-3 rounded-sm transition-all text-sm font-mono uppercase tracking-wide ${view === ViewState.WRITER ? 'bg-black dark:bg-white text-white dark:text-black' : 'text-stone-400 dark:text-stone-600'} disabled:opacity-50`}
               >
-                03 Antrag
+                {t('navigation.application')}
               </button>
               <div className="pt-2 border-t border-stone-200 dark:border-stone-800">
                 <div className="flex items-center justify-between px-4 py-2">
-                  <span className="text-xs font-mono uppercase text-stone-400">Design</span>
-                  <DarkModeToggle />
+                  <span className="text-xs font-mono uppercase text-stone-400">{t('common.design')}</span>
+                  <div className="flex items-center gap-2">
+                    <LanguageToggle />
+                    <DarkModeToggle />
+                  </div>
                 </div>
               </div>
             </div>
@@ -209,11 +216,11 @@ const App: React.FC = () => {
             <div className="animate-in fade-in slide-in-from-bottom-4 duration-700">
               <div className="mb-16 border-b border-stone-200 pb-8">
                   <h2 className="text-4xl md:text-6xl font-semibold tracking-tighter mb-6 leading-[0.9]">
-                    Datenbasis &<br/>
-                    <span className="text-stone-400">Grundschulprofil.</span>
+                    {t('profile.title')} &<br/>
+                    <span className="text-stone-400">{t('profile.subtitle')}</span>
                   </h2>
                   <p className="text-lg text-stone-600 font-light max-w-2xl font-serif italic">
-                    "Präzise Daten führen zu präzisen Anträgen. Wir haben bereits erste Informationen aus dem Web extrahiert."
+                    {t('profile.description')}
                   </p>
               </div>
               <SchoolProfileForm profile={profile} onSave={handleSaveProfile} />

@@ -6,6 +6,9 @@ import { DarkModeProvider } from './contexts/DarkModeContext';
 import { ToastProvider } from './contexts/ToastContext';
 import { ErrorBoundary } from "react-error-boundary";
 
+// Initialize i18n (must be imported before App)
+import './i18n';
+
 const rootElement = document.getElementById('root');
 if (!rootElement) {
   throw new Error("Could not find root element to mount to");

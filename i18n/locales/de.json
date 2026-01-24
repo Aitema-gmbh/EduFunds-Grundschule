@@ -1,0 +1,92 @@
+{
+  "common": {
+    "startNow": "Jetzt Starten",
+    "freeTest": "Kostenlos Testen",
+    "noInstallation": "Keine Installation nötig",
+    "viewAllCategories": "Alle Kategorien ansehen",
+    "startScan": "Scan Starten",
+    "design": "Design"
+  },
+  "navigation": {
+    "theProblem": "Das Problem",
+    "howItWorks": "So funktioniert's",
+    "examples": "Beispiele",
+    "dashboard": "Dashboard",
+    "profile": "01 Profil",
+    "matching": "02 Matching",
+    "application": "03 Antrag",
+    "closeMenu": "Menü schließen",
+    "openMenu": "Menü öffnen"
+  },
+  "hero": {
+    "badge": "Exklusiv für Grundschulen",
+    "title1": "Fördergelder abrufen.",
+    "title2": "Ohne den Papierkrieg.",
+    "description": "Wir automatisieren die Suche und Antragstellung für Fördermittel. Damit Sie sich wieder auf das konzentrieren können, was zählt:",
+    "theChildren": "Die Kinder."
+  },
+  "problem": {
+    "statusQuoTitle": "Der Status Quo",
+    "statusQuoQuote": "\"Ich würde ja gerne, aber...\"",
+    "statusQuoReason1": "Keine Zeit für stundenlange Recherche in Amtsblättern.",
+    "statusQuoReason2": "Fristen für \"Startchancen\" oder \"DigitalPakt\" verpasst.",
+    "statusQuoReason3": "Formulierungen klingen nicht \"amtlich\" genug.",
+    "solutionTitle": "Mit EduFunds.org",
+    "solutionQuote": "Finanzierung auf Autopilot.",
+    "solutionFeature1Title": "Automatische Suche:",
+    "solutionFeature1Desc": "Wir finden Programme, die exakt zu Ihrer Schule passen.",
+    "solutionFeature2Title": "Fristen-Radar:",
+    "solutionFeature2Desc": "Nie wieder Geld verfallen lassen.",
+    "solutionFeature3Title": "KI-Schreibkraft:",
+    "solutionFeature3Desc": "Fertige Anträge in 30 Sekunden. DIN-konform."
+  },
+  "howItWorks": {
+    "title": "So funktioniert der Prozess",
+    "description": "Sie liefern die Idee (z.B. \"Neuer Schulgarten\"). Unsere Plattform erledigt den Rest – von der Recherche bis zum unterschriftsreifen PDF.",
+    "step1Title": "Schulprofil Scannen",
+    "step1Desc": "Geben Sie einfach den Namen Ihrer Schule ein. Wir laden Leitbild und Daten automatisch aus dem Web.",
+    "step2Title": "Matching & Auswahl",
+    "step2Desc": "Wir filtern tausende Programme (Bund, Land, EU, Stiftungen) und zeigen nur die, die wirklich passen.",
+    "step3Title": "Generierung",
+    "step3Desc": "Unsere KI schreibt den Antragstext, begründet pädagogisch und formatiert alles nach DIN 5008.",
+    "yourSchool": "Ihre Schule",
+    "finishedApplication": "Fertiger Antrag"
+  },
+  "examples": {
+    "title": "Was Sie finanzieren können",
+    "description": "Typische Projekte, die erfolgreich über EduFunds gefördert wurden.",
+    "greenClassroomTitle": "Grünes Klassenzimmer",
+    "greenClassroomDesc": "Schulgarten, Hochbeete oder Entsiegelung des Schulhofs.",
+    "makerspaceTitle": "Makerspace & IT",
+    "makerspaceDesc": "Tablets, Roboter-Sets oder Einrichtung eines Medienraums.",
+    "fulltimeTitle": "Ganztag & OGS",
+    "fulltimeDesc": "Möbel für Ruheräume, Spielgeräte oder Küchenausstattung.",
+    "upTo": "Bis",
+    "fullQuote": "100% Quote",
+    "states": "Länder"
+  },
+  "footer": {
+    "tagline": "Die digitale Förderabteilung für Deutschlands Grundschulen.",
+    "madeInGermany": "Made in Germany. Hosted in EU.",
+    "imprint": "Impressum",
+    "privacy": "Datenschutz",
+    "contact": "Kontakt",
+    "readyTitle": "Bereit für den ersten Antrag?",
+    "readyDesc": "Starten Sie jetzt die kostenlose Analyse Ihrer Schule.",
+    "ticker1": "GGS Mühlenbach: 50.000€ für Startchancen bewilligt",
+    "ticker2": "Kath. Schule Köln: Neuer OGS-Raum finanziert",
+    "ticker3": "Grundschule Berlin-Mitte: Digital-Paket abgerufen"
+  },
+  "profile": {
+    "title": "Datenbasis",
+    "subtitle": "Grundschulprofil.",
+    "description": "\"Präzise Daten führen zu präzisen Anträgen. Wir haben bereits erste Informationen aus dem Web extrahiert.\"",
+    "savedSuccess": "Profil erfolgreich gespeichert!",
+    "loadedSuccess": "Schulprofil erfolgreich geladen!"
+  },
+  "language": {
+    "toggle": "Sprache wechseln",
+    "german": "Deutsch",
+    "english": "English"
+  }
+}
