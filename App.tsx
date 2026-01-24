@@ -9,6 +9,8 @@ import { Dashboard } from './components/Dashboard';
 import { DarkModeToggle } from './components/DarkModeToggle';
 import { ViewState, SchoolProfile, FundingProgram, MatchResult } from './types';
 import { INITIAL_PROFILE, MOCK_FUNDING_PROGRAMS } from './constants';
+import { useToast } from './contexts/ToastContext';
+import { Menu, X } from 'lucide-react';
 
 const App: React.FC = () => {
   const [view, setView] = useState<ViewState>(ViewState.LANDING);
@@ -16,6 +18,8 @@ const App: React.FC = () => {
   const [selectedProgram, setSelectedProgram] = useState<FundingProgram | null>(null);
   const [matchedPrograms, setMatchedPrograms] = useState<MatchResult[]>([]);
   const [allPrograms, setAllPrograms] = useState<FundingProgram[]>(MOCK_FUNDING_PROGRAMS);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { showToast } = useToast();
 
   // Load profile from local storage on boot
   useEffect(() => {
@@ -49,12 +53,14 @@ const App: React.FC = () => {
     setProfile(extractedProfile);
     localStorage.setItem('sf_profile', JSON.stringify(extractedProfile));
     setView(ViewState.PROFILE);
+    showToast('Schulprofil erfolgreich geladen!', 'success');
   }
 
   const handleSaveProfile = (updatedProfile: SchoolProfile) => {
     setProfile(updatedProfile);
     localStorage.setItem('sf_profile', JSON.stringify(updatedProfile));
     setView(ViewState.DASHBOARD);
+    showToast('Profil erfolgreich gespeichert!', 'success');
   };
 
   const handleNavigate = (viewName: string) => {
@@ -91,40 +97,54 @@ const App: React.FC = () => {
     <div className="min-h-screen flex flex-col bg-stone-50 dark:bg-stone-950 font-sans selection:bg-black selection:text-white dark:selection:bg-white dark:selection:text-black bg-noise transition-colors duration-300">
       {/* Minimalist Header */}
       <header className="border-b border-stone-200 dark:border-stone-800 bg-white/80 dark:bg-stone-950/80 backdrop-blur-md sticky top-0 z-50 content-z transition-colors duration-300">
-        <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-          <div 
-            className="font-bold text-lg tracking-tight cursor-pointer flex items-center gap-3" 
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+          <div
+            className="font-bold text-lg tracking-tight cursor-pointer flex items-center gap-3"
             onClick={() => setView(ViewState.LANDING)}
           >
             <div className="w-5 h-5 bg-black dark:bg-white text-white dark:text-black flex items-center justify-center font-serif font-bold text-xs italic pt-0.5 transition-colors duration-300">Ef</div>
             <span className="font-mono tracking-tight text-sm uppercase dark:text-white transition-colors duration-300">EduFunds.org</span>
           </div>
-          
+
+          {/* Mobile menu button */}
+          <button
+            className="md:hidden p-2 hover:bg-stone-100 dark:hover:bg-stone-800 rounded-sm transition-colors focus-ring"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label={mobileMenuOpen ? 'Menü schließen' : 'Menü öffnen'}
+          >
+            {mobileMenuOpen ? (
+              <X className="w-5 h-5 dark:text-white" />
+            ) : (
+              <Menu className="w-5 h-5 dark:text-white" />
+            )}
+          </button>
+
+          {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-1 text-xs font-mono uppercase tracking-wide">
             <DarkModeToggle />
             <div className="w-px h-4 bg-stone-200 dark:bg-stone-700 mx-2"></div>
-            <button 
+            <button
                 onClick={() => setView(ViewState.DASHBOARD)}
-                className={`px-4 py-1.5 rounded-full transition-all ${view === ViewState.DASHBOARD ? 'bg-black dark:bg-white text-white dark:text-black' : 'text-slate-400 hover:text-black dark:hover:text-white'}`}
+                className={`px-4 py-1.5 rounded-full transition-all btn-interactive focus-ring ${view === ViewState.DASHBOARD ? 'bg-black dark:bg-white text-white dark:text-black' : 'text-slate-400 hover:text-black dark:hover:text-white'}`}
             >
                 Dashboard
             </button>
             <div className="w-4 h-px bg-stone-300 dark:bg-stone-700"></div>
-            <button 
+            <button
                 onClick={() => setView(ViewState.PROFILE)}
-                className={`px-4 py-1.5 rounded-full transition-all ${view === ViewState.PROFILE ? 'bg-black dark:bg-white text-white dark:text-black' : 'text-slate-400 hover:text-black dark:hover:text-white'}`}
+                className={`px-4 py-1.5 rounded-full transition-all btn-interactive focus-ring ${view === ViewState.PROFILE ? 'bg-black dark:bg-white text-white dark:text-black' : 'text-slate-400 hover:text-black dark:hover:text-white'}`}
             >
                 01 Profil
             </button>
             <div className="w-4 h-px bg-stone-300 dark:bg-stone-700"></div>
-            <button 
+            <button
                 onClick={() => setView(ViewState.MATCHING)}
-                className={`px-4 py-1.5 rounded-full transition-all ${view === ViewState.MATCHING ? 'bg-black dark:bg-white text-white dark:text-black' : 'text-slate-400 hover:text-black dark:hover:text-white'}`}
+                className={`px-4 py-1.5 rounded-full transition-all btn-interactive focus-ring ${view === ViewState.MATCHING ? 'bg-black dark:bg-white text-white dark:text-black' : 'text-slate-400 hover:text-black dark:hover:text-white'}`}
             >
                 02 Matching
             </button>
             <div className="w-4 h-px bg-stone-300 dark:bg-stone-700"></div>
-            <button 
+            <button
                 disabled={view !== ViewState.WRITER}
                 className={`px-4 py-1.5 rounded-full transition-all ${view === ViewState.WRITER ? 'bg-black dark:bg-white text-white dark:text-black' : 'text-slate-400 hover:text-black dark:hover:text-white disabled:opacity-50'}`}
             >
@@ -132,10 +152,48 @@ const App: React.FC = () => {
             </button>
           </nav>
         </div>
+
+        {/* Mobile Navigation Menu */}
+        {mobileMenuOpen && (
+          <div className="md:hidden border-t border-stone-200 dark:border-stone-800 bg-white dark:bg-stone-950 mobile-menu-animate">
+            <div className="px-4 py-4 space-y-2">
+              <button
+                onClick={() => { setView(ViewState.DASHBOARD); setMobileMenuOpen(false); }}
+                className={`w-full text-left px-4 py-3 rounded-sm transition-all text-sm font-mono uppercase tracking-wide focus-ring ${view === ViewState.DASHBOARD ? 'bg-black dark:bg-white text-white dark:text-black' : 'text-stone-600 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-800'}`}
+              >
+                Dashboard
+              </button>
+              <button
+                onClick={() => { setView(ViewState.PROFILE); setMobileMenuOpen(false); }}
+                className={`w-full text-left px-4 py-3 rounded-sm transition-all text-sm font-mono uppercase tracking-wide focus-ring ${view === ViewState.PROFILE ? 'bg-black dark:bg-white text-white dark:text-black' : 'text-stone-600 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-800'}`}
+              >
+                01 Profil
+              </button>
+              <button
+                onClick={() => { setView(ViewState.MATCHING); setMobileMenuOpen(false); }}
+                className={`w-full text-left px-4 py-3 rounded-sm transition-all text-sm font-mono uppercase tracking-wide focus-ring ${view === ViewState.MATCHING ? 'bg-black dark:bg-white text-white dark:text-black' : 'text-stone-600 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-800'}`}
+              >
+                02 Matching
+              </button>
+              <button
+                disabled={view !== ViewState.WRITER}
+                className={`w-full text-left px-4 py-3 rounded-sm transition-all text-sm font-mono uppercase tracking-wide ${view === ViewState.WRITER ? 'bg-black dark:bg-white text-white dark:text-black' : 'text-stone-400 dark:text-stone-600'} disabled:opacity-50`}
+              >
+                03 Antrag
+              </button>
+              <div className="pt-2 border-t border-stone-200 dark:border-stone-800">
+                <div className="flex items-center justify-between px-4 py-2">
+                  <span className="text-xs font-mono uppercase text-stone-400">Design</span>
+                  <DarkModeToggle />
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
       </header>
 
       {/* Main Content */}
-      <main className="flex-grow py-12 px-6 content-z">
+      <main className="flex-grow py-8 sm:py-12 px-4 sm:px-6 content-z">
         <div className="max-w-6xl mx-auto">
           {view === ViewState.DASHBOARD && (
             <Dashboard

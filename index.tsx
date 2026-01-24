@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import { ErrorProvider } from './contexts/ErrorContext';
 import { DarkModeProvider } from './contexts/DarkModeContext';
+import { ToastProvider } from './contexts/ToastContext';
 import { ErrorBoundary } from "react-error-boundary";
 
 const rootElement = document.getElementById('root');
@@ -25,9 +26,11 @@ root.render(
   <React.StrictMode>
     <ErrorBoundary FallbackComponent={Fallback}>
       <DarkModeProvider>
-        <ErrorProvider>
-          <App />
-        </ErrorProvider>
+        <ToastProvider>
+          <ErrorProvider>
+            <App />
+          </ErrorProvider>
+        </ToastProvider>
       </DarkModeProvider>
     </ErrorBoundary>
   </React.StrictMode>

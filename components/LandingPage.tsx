@@ -21,9 +21,9 @@ export const LandingPage: React.FC<Props> = ({ onStart }) => {
               <a href="#how-it-works" className="hover:text-black transition-colors">So funktioniert's</a>
               <a href="#examples" className="hover:text-black transition-colors">Beispiele</a>
           </div>
-          <button 
+          <button
             onClick={onStart}
-            className="bg-black text-white px-6 py-2.5 text-xs font-bold uppercase tracking-widest hover:bg-stone-800 transition-all shadow-lg shadow-stone-200/50 rounded-sm"
+            className="bg-black text-white px-6 py-2.5 text-xs font-bold uppercase tracking-widest hover:bg-stone-800 transition-all shadow-lg shadow-stone-200/50 rounded-sm btn-interactive focus-ring"
           >
             Jetzt Starten
           </button>
@@ -33,7 +33,7 @@ export const LandingPage: React.FC<Props> = ({ onStart }) => {
       <main className="flex-grow">
       
       {/* Hero Section: Benefit First */}
-      <section className="relative pt-24 pb-32 px-6 overflow-hidden bg-white">
+      <section className="relative pt-16 sm:pt-24 pb-24 sm:pb-32 px-4 sm:px-6 overflow-hidden bg-white">
          {/* Subtle Background Pattern */}
          <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(#000 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
          
@@ -43,7 +43,7 @@ export const LandingPage: React.FC<Props> = ({ onStart }) => {
                 <span className="text-xs font-bold text-stone-600 uppercase tracking-wide">Exklusiv für Grundschulen</span>
             </div>
             
-            <h1 className="text-5xl md:text-7xl font-bold tracking-tighter leading-[1.05] mb-8 animate-in fade-in slide-in-from-bottom-4 duration-1000 text-stone-900">
+            <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tighter leading-[1.05] mb-6 sm:mb-8 animate-in fade-in slide-in-from-bottom-4 duration-1000 text-stone-900">
                Fördergelder abrufen.<br/>
                <span className="font-serif italic text-stone-500">Ohne den Papierkrieg.</span>
             </h1>
@@ -54,9 +54,9 @@ export const LandingPage: React.FC<Props> = ({ onStart }) => {
             </p>
             
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-200">
-                <button 
+                <button
                     onClick={onStart}
-                    className="group bg-black text-white h-14 px-10 flex items-center gap-3 font-bold text-sm uppercase tracking-widest hover:bg-stone-800 transition-all shadow-xl shadow-stone-300 rounded-sm"
+                    className="group bg-black text-white h-14 px-10 flex items-center gap-3 font-bold text-sm uppercase tracking-widest hover:bg-stone-800 transition-all shadow-xl shadow-stone-300 rounded-sm btn-interactive focus-ring"
                 >
                     Kostenlos Testen <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </button>
@@ -180,7 +180,7 @@ export const LandingPage: React.FC<Props> = ({ onStart }) => {
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                   {/* Card 1 */}
-                  <div className="bg-white p-8 shadow-sm hover:shadow-xl transition-shadow group cursor-pointer">
+                  <div className="bg-white p-8 shadow-sm hover:shadow-xl transition-shadow group cursor-pointer card-hover">
                       <div className="w-12 h-12 bg-green-50 flex items-center justify-center mb-6 rounded-sm group-hover:bg-green-100 transition-colors">
                           <Leaf className="w-6 h-6 text-green-700" />
                       </div>
@@ -196,7 +196,7 @@ export const LandingPage: React.FC<Props> = ({ onStart }) => {
                   </div>
 
                   {/* Card 2 */}
-                  <div className="bg-white p-8 shadow-sm hover:shadow-xl transition-shadow group cursor-pointer">
+                  <div className="bg-white p-8 shadow-sm hover:shadow-xl transition-shadow group cursor-pointer card-hover">
                       <div className="w-12 h-12 bg-blue-50 flex items-center justify-center mb-6 rounded-sm group-hover:bg-blue-100 transition-colors">
                           <Laptop className="w-6 h-6 text-blue-700" />
                       </div>
@@ -212,7 +212,7 @@ export const LandingPage: React.FC<Props> = ({ onStart }) => {
                   </div>
 
                   {/* Card 3 */}
-                  <div className="bg-white p-8 shadow-sm hover:shadow-xl transition-shadow group cursor-pointer">
+                  <div className="bg-white p-8 shadow-sm hover:shadow-xl transition-shadow group cursor-pointer card-hover">
                       <div className="w-12 h-12 bg-purple-50 flex items-center justify-center mb-6 rounded-sm group-hover:bg-purple-100 transition-colors">
                           <School className="w-6 h-6 text-purple-700" />
                       </div>
@@ -263,7 +263,7 @@ export const LandingPage: React.FC<Props> = ({ onStart }) => {
               <div className="bg-stone-900 p-8 rounded-sm max-w-sm border border-stone-800">
                   <h4 className="text-white font-bold mb-2">Bereit für den ersten Antrag?</h4>
                   <p className="text-sm text-stone-500 mb-6">Starten Sie jetzt die kostenlose Analyse Ihrer Schule.</p>
-                   <button onClick={onStart} className="w-full bg-white text-black px-8 py-4 text-xs font-bold uppercase tracking-widest hover:bg-stone-200 transition-colors">
+                   <button onClick={onStart} className="w-full bg-white text-black px-8 py-4 text-xs font-bold uppercase tracking-widest hover:bg-stone-200 transition-colors btn-interactive focus-ring">
                        Scan Starten
                    </button>
               </div>

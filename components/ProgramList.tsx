@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { FundingProgram, MatchResult, SchoolProfile } from '../types';
 import { matchProgramsWithGemini, searchLiveFunding } from '../services/geminiService';
 import { ArrowRight, Loader2, Globe, Clock, Euro, ExternalLink, MapPin, Sparkles } from 'lucide-react';
+import { ProgramListSkeleton } from './Skeleton';
 
 interface Props {
   profile: SchoolProfile;
@@ -69,13 +70,7 @@ export const ProgramList: React.FC<Props> = ({ profile, onSelectProgram, onBack,
   const sortedMatches = [...matches].sort((a, b) => b.score - a.score);
 
   if (loading && !searchingLive && matches.length === 0) {
-    return (
-      <div className="flex flex-col items-center justify-center h-[40vh]">
-         <Loader2 className="h-10 w-10 animate-spin text-black mb-6" />
-         <p className="text-stone-900 font-bold text-sm uppercase tracking-widest">Analysiere Förderlandschaft...</p>
-         <p className="text-stone-400 text-xs font-mono mt-2">Wende Filter an: {profile.state} • Primarstufe</p>
-      </div>
-    );
+    return <ProgramListSkeleton />;
   }
 
   return (
