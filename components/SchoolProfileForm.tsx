@@ -1,8 +1,9 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { SchoolProfile } from '../types';
-import { ArrowRight, Globe, Layout, Users, Wand2, RefreshCw, Loader2, MapPin, Award, Mail, Phone } from 'lucide-react';
+import { ArrowRight, Globe, Layout, Users, Wand2, RefreshCw, Loader2, MapPin, Award, Mail, Phone, AlertCircle } from 'lucide-react';
 import { analyzeSchoolWithGemini } from '../services/geminiService';
+import { validateSchoolProfile, FormErrors, hasErrors, validators } from '../services/validationService';
 
 interface Props {
   profile: SchoolProfile;
@@ -32,18 +33,79 @@ const STATES = [
 export const SchoolProfileForm: React.FC<Props> = ({ profile, onSave }) => {
   const [formData, setFormData] = useState<SchoolProfile>(profile);
   const [isReanalyzing, setIsReanalyzing] = useState(false);
+  const [errors, setErrors] = useState<FormErrors>({});
+  const [touched, setTouched] = useState<{ [key: string]: boolean }>({});
 
   useEffect(() => {
       setFormData(profile);
   }, [profile]);
 
+  // Real-time validation as user types
+  const validateField = useCallback((name: string, value: string | number) => {
+    let error: string | undefined;
+
+    switch (name) {
+      case 'name':
+        const nameResult = validators.required(value as string, 'Schulname');
+        if (!nameResult.isValid) {
+          error = nameResult.error;
+        } else if ((value as string).length < 3) {
+          error = 'Schulname muss mindestens 3 Zeichen haben';
+        }
+        break;
+      case 'location':
+        const locResult = validators.required(value as string, 'Standort');
+        error = locResult.error;
+        break;
+      case 'email':
+        if (value) {
+          const emailResult = validators.email(value as string);
+          error = emailResult.error;
+        }
+        break;
+      case 'website':
+        if (value) {
+          const urlResult = validators.url(value as string);
+          error = urlResult.error;
+        }
+        break;
+      case 'studentCount':
+        if (value && Number(value) <= 0) {
+          error = 'Schülerzahl muss größer als 0 sein';
+        }
+        break;
+    }
+
+    setErrors(prev => ({ ...prev, [name]: error }));
+  }, []);
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
+    const processedValue = name === 'studentCount' || name === 'socialIndex' || name === 'teacherCount' ? Number(value) : value;
+
     setFormData(prev => ({
       ...prev,
-      [name]: name === 'studentCount' || name === 'socialIndex' || name === 'teacherCount' ? Number(value) : value
+      [name]: processedValue
     }));
+
+    // Real-time validation if field has been touched
+    if (touched[name]) {
+      validateField(name, processedValue);
+    }
   };
+
+  // Validate on blur
+  const handleBlur = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setTouched(prev => ({ ...prev, [name]: true }));
+    validateField(name, name === 'studentCount' || name === 'socialIndex' || name === 'teacherCount' ? Number(value) : value);
+  };
+
+  // Check if form is valid for submission
+  const isFormValid = useCallback(() => {
+    const validationErrors = validateSchoolProfile(formData);
+    return !hasErrors(validationErrors) && formData.name && formData.state;
+  }, [formData]);
 
   const toggleFocus = (focus: string) => {
     setFormData(prev => {
@@ -84,6 +146,28 @@ export const SchoolProfileForm: React.FC<Props> = ({ profile, onSave }) => {
   ];
   
   const isAiFilled = (val: any) => val && val !== '' && val !== 0;
+
+  // Inline error message component
+  const ErrorMessage: React.FC<{ error?: string }> = ({ error }) => {
+    if (!error) return null;
+    return (
+      <div className="flex items-center gap-1 mt-1 text-red-600 text-xs animate-in fade-in slide-in-from-top-1 duration-200">
+        <AlertCircle className="w-3 h-3" />
+        <span>{error}</span>
+      </div>
+    );
+  };
+
+  // Get input border class based on validation state
+  const getInputClass = (fieldName: string, baseClass: string) => {
+    if (touched[fieldName] && errors[fieldName]) {
+      return `${baseClass} border-red-400 focus:border-red-500`;
+    }
+    if (touched[fieldName] && !errors[fieldName]) {
+      return `${baseClass} border-green-400 focus:border-green-500`;
+    }
+    return baseClass;
+  };
 
   return (
     <div className="max-w-6xl">
@@ -129,13 +213,15 @@ export const SchoolProfileForm: React.FC<Props> = ({ profile, onSave }) => {
                 <div className="space-y-6">
                     <div className="group">
                         <label className="block text-xs font-mono text-stone-400 mb-1 uppercase">Name der Schule</label>
-                        <input type="text" name="name" value={formData.name} onChange={handleChange} className="w-full bg-transparent border-b border-stone-200 py-2 text-lg font-bold focus:border-black focus:outline-none" />
+                        <input type="text" name="name" value={formData.name} onChange={handleChange} onBlur={handleBlur} className={getInputClass('name', 'w-full bg-transparent border-b py-2 text-lg font-bold focus:outline-none transition-colors')} />
+                        <ErrorMessage error={touched.name ? errors.name : undefined} />
                     </div>
                     
                     <div className="grid grid-cols-2 gap-4">
                         <div className="group">
                             <label className="block text-xs font-mono text-stone-400 mb-1 uppercase">Standort (Stadt)</label>
-                            <input type="text" name="location" value={formData.location} onChange={handleChange} className="w-full bg-transparent border-b border-stone-200 py-2 text-base font-medium focus:border-black focus:outline-none" />
+                            <input type="text" name="location" value={formData.location} onChange={handleChange} onBlur={handleBlur} className={getInputClass('location', 'w-full bg-transparent border-b py-2 text-base font-medium focus:outline-none transition-colors')} />
+                            <ErrorMessage error={touched.location ? errors.location : undefined} />
                         </div>
                          <div className="group">
                             <label className="flex items-center gap-2 text-xs font-mono text-stone-400 mb-1 uppercase">
@@ -163,8 +249,9 @@ export const SchoolProfileForm: React.FC<Props> = ({ profile, onSave }) => {
                         <label className="block text-xs font-mono text-stone-400 mb-1 uppercase">Web-Adresse</label>
                         <div className="flex items-center gap-2">
                             <Globe className="w-4 h-4 text-stone-300" />
-                            <input type="text" name="website" value={formData.website || ''} onChange={handleChange} className="w-full bg-transparent border-b border-stone-200 py-2 text-sm font-mono text-blue-600 focus:border-black focus:outline-none" />
+                            <input type="text" name="website" value={formData.website || ''} onChange={handleChange} onBlur={handleBlur} className={getInputClass('website', 'w-full bg-transparent border-b py-2 text-sm font-mono text-blue-600 focus:outline-none transition-colors')} />
                         </div>
+                        <ErrorMessage error={touched.website ? errors.website : undefined} />
                     </div>
                 </div>
             </div>
@@ -187,7 +274,8 @@ export const SchoolProfileForm: React.FC<Props> = ({ profile, onSave }) => {
                     <div className="grid grid-cols-2 gap-4">
                         <div>
                             <label className="block text-xs font-mono text-stone-400 mb-1 uppercase">Schülerzahl</label>
-                            <input type="number" name="studentCount" value={formData.studentCount} onChange={handleChange} className="w-full border-b border-stone-200 py-2 text-xl font-mono font-bold focus:border-black focus:outline-none" />
+                            <input type="number" name="studentCount" value={formData.studentCount} onChange={handleChange} onBlur={handleBlur} className={getInputClass('studentCount', 'w-full border-b py-2 text-xl font-mono font-bold focus:outline-none transition-colors')} />
+                            <ErrorMessage error={touched.studentCount ? errors.studentCount : undefined} />
                         </div>
                         <div>
                             <label className="block text-xs font-mono text-stone-400 mb-1 uppercase">Lehrkräfte</label>
@@ -227,7 +315,7 @@ export const SchoolProfileForm: React.FC<Props> = ({ profile, onSave }) => {
         </div>
 
         <div className="flex justify-end border-t border-stone-100 pt-8">
-            <button onClick={() => onSave(formData)} disabled={!formData.name || !formData.state} className="bg-black text-white px-12 py-4 flex items-center gap-4 text-sm uppercase tracking-widest font-bold hover:bg-stone-800 transition-colors shadow-xl shadow-stone-200 disabled:opacity-50">
+            <button onClick={() => onSave(formData)} disabled={!isFormValid()} className="bg-black text-white px-12 py-4 flex items-center gap-4 text-sm uppercase tracking-widest font-bold hover:bg-stone-800 transition-colors shadow-xl shadow-stone-200 disabled:opacity-50 disabled:cursor-not-allowed">
                 Programme Matchen <ArrowRight size={18} />
             </button>
         </div>
