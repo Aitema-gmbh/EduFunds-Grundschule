@@ -11,10 +11,12 @@ import { DarkModeToggle } from './components/DarkModeToggle';
 import { LanguageToggle } from './components/LanguageToggle';
 import { NotificationSettings } from './components/NotificationSettings';
 import { AnalyticsDashboard } from './components/AnalyticsDashboard';
+import { DataSettings } from './components/DataSettings';
+import { storageService, STORAGE_KEYS } from './services/storageService';
 import { ViewState, SchoolProfile, FundingProgram, MatchResult } from './types';
 import { INITIAL_PROFILE, MOCK_FUNDING_PROGRAMS } from './constants';
 import { useToast } from './contexts/ToastContext';
-import { Menu, X, Bell, BarChart3 } from 'lucide-react';
+import { Menu, X, Bell, BarChart3, Settings } from 'lucide-react';
 
 const App: React.FC = () => {
   const { t } = useTranslation();
@@ -28,10 +30,10 @@ const App: React.FC = () => {
 
   // Load profile from local storage on boot
   useEffect(() => {
-      const saved = localStorage.getItem('sf_profile');
+      const saved = storageService.getItem<SchoolProfile | null>(STORAGE_KEYS.PROFILE, null);
       if (saved) {
           try {
-              setProfile(JSON.parse(saved));
+              setProfile(saved);
               // If we have a profile, skip landing logic on refresh for convenience? 
               // Or maybe better to always show landing unless manually navigated.
               // For now, let's keep Profile logic if data exists, but maybe user wants to see landing first.
@@ -46,7 +48,7 @@ const App: React.FC = () => {
   }, []);
 
   const handleStart = () => {
-      const saved = localStorage.getItem('sf_profile');
+      const saved = storageService.getItem<SchoolProfile | null>(STORAGE_KEYS.PROFILE, null);
       if (saved) {
            setView(ViewState.PROFILE);
       } else {
@@ -56,14 +58,14 @@ const App: React.FC = () => {
 
   const handleLogin = (extractedProfile: SchoolProfile) => {
     setProfile(extractedProfile);
-    localStorage.setItem('sf_profile', JSON.stringify(extractedProfile));
+    storageService.setItem(STORAGE_KEYS.PROFILE, extractedProfile);
     setView(ViewState.PROFILE);
     showToast(t('profile.loadedSuccess'), 'success');
   }
 
   const handleSaveProfile = (updatedProfile: SchoolProfile) => {
     setProfile(updatedProfile);
-    localStorage.setItem('sf_profile', JSON.stringify(updatedProfile));
+    storageService.setItem(STORAGE_KEYS.PROFILE, updatedProfile);
     setView(ViewState.DASHBOARD);
     showToast(t('profile.savedSuccess'), 'success');
   };
@@ -141,6 +143,13 @@ const App: React.FC = () => {
                 aria-label="Analytics"
             >
                 <BarChart3 className="w-5 h-5 text-stone-600 dark:text-stone-400" />
+            </button>
+            <button
+                onClick={() => setView(ViewState.SETTINGS)}
+                className={`relative w-9 h-9 rounded-full flex items-center justify-center bg-stone-100 dark:bg-stone-800 hover:bg-stone-200 dark:hover:bg-stone-700 transition-all duration-300 ${view === ViewState.SETTINGS ? 'ring-2 ring-black dark:ring-white' : ''}`}
+                aria-label="Settings"
+            >
+                <Settings className="w-5 h-5 text-stone-600 dark:text-stone-400" />
             </button>
             <div className="w-px h-4 bg-stone-200 dark:bg-stone-700 mx-2"></div>
             <button
@@ -221,6 +230,13 @@ const App: React.FC = () => {
                     >
                       <BarChart3 className="w-5 h-5 text-stone-600 dark:text-stone-400" />
                     </button>
+                    <button
+                      onClick={() => { setView(ViewState.SETTINGS); setMobileMenuOpen(false); }}
+                      className={`relative w-9 h-9 rounded-full flex items-center justify-center bg-stone-100 dark:bg-stone-800 hover:bg-stone-200 dark:hover:bg-stone-700 transition-all duration-300 ${view === ViewState.SETTINGS ? 'ring-2 ring-black dark:ring-white' : ''}`}
+                      aria-label="Settings"
+                    >
+                      <Settings className="w-5 h-5 text-stone-600 dark:text-stone-400" />
+                    </button>
                   </div>
                 </div>
               </div>
@@ -297,6 +313,27 @@ const App: React.FC = () => {
                 programs={allPrograms}
                 matchedPrograms={matchedPrograms}
                 onBack={handleBackToDashboard}
+              />
+            </div>
+          )}
+
+          {view === ViewState.SETTINGS && (
+            <div className="animate-in fade-in slide-in-from-bottom-4 duration-700">
+              <div className="mb-16 border-b border-stone-200 pb-8">
+                <h2 className="text-4xl md:text-6xl font-semibold tracking-tighter mb-6 leading-[0.9]">
+                  Einstellungen &<br/>
+                  <span className="text-stone-400">Datenverwaltung</span>
+                </h2>
+                <p className="text-lg text-stone-600 font-light max-w-2xl font-serif italic">
+                  Verwalten Sie Ihre lokalen Daten, Offline-Speicher und Synchronisierung.
+                </p>
+              </div>
+              <DataSettings
+                onDataCleared={() => {
+                  setProfile(INITIAL_PROFILE);
+                  setMatchedPrograms([]);
+                  setView(ViewState.LANDING);
+                }}
               />
             </div>
           )}
