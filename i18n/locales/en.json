@@ -88,5 +88,24 @@
     "toggle": "Switch language",
     "german": "Deutsch",
     "english": "English"
+  },
+  "shortcuts": {
+    "title": "Keyboard Shortcuts",
+    "navigation": "Navigation",
+    "actions": "Actions",
+    "global": "Global",
+    "goToDashboard": "Go to Dashboard",
+    "goToProfile": "Go to Profile",
+    "goToMatching": "Go to Matching",
+    "goToNotifications": "Go to Notifications",
+    "goToHome": "Go to Home",
+    "saveProfile": "Save current form",
+    "search": "Focus search",
+    "closeOrBlur": "Close modal / Blur input",
+    "showHelp": "Show this help",
+    "toggleDarkMode": "Toggle dark mode",
+    "hint": "Press ? anywhere to show this help",
+    "pressQuestion": "Press ? for shortcuts",
+    "noSearchField": "No search field on this page"
   }
 }

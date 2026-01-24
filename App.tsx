@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { SchoolProfileForm } from './components/SchoolProfileForm';
 import { ProgramList } from './components/ProgramList';
@@ -10,10 +10,12 @@ import { Dashboard } from './components/Dashboard';
 import { DarkModeToggle } from './components/DarkModeToggle';
 import { LanguageToggle } from './components/LanguageToggle';
 import { NotificationSettings } from './components/NotificationSettings';
+import { KeyboardShortcutsModal } from './components/KeyboardShortcutsModal';
 import { ViewState, SchoolProfile, FundingProgram, MatchResult } from './types';
 import { INITIAL_PROFILE, MOCK_FUNDING_PROGRAMS } from './constants';
 import { useToast } from './contexts/ToastContext';
-import { Menu, X, Bell } from 'lucide-react';
+import { useKeyboardShortcuts, KeyboardShortcut } from './hooks/useKeyboardShortcuts';
+import { Menu, X, Bell, Keyboard } from 'lucide-react';
 
 const App: React.FC = () => {
   const { t } = useTranslation();
@@ -23,7 +25,105 @@ const App: React.FC = () => {
   const [matchedPrograms, setMatchedPrograms] = useState<MatchResult[]>([]);
   const [allPrograms, setAllPrograms] = useState<FundingProgram[]>(MOCK_FUNDING_PROGRAMS);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [shortcutsModalOpen, setShortcutsModalOpen] = useState(false);
   const { showToast } = useToast();
+
+  // Toggle dark mode function
+  const toggleDarkMode = useCallback(() => {
+    document.documentElement.classList.toggle('dark');
+    const isDark = document.documentElement.classList.contains('dark');
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+  }, []);
+
+  // Keyboard shortcuts configuration
+  const shortcuts: KeyboardShortcut[] = useMemo(() => [
+    // Global shortcuts
+    {
+      key: '?',
+      description: 'Show keyboard shortcuts',
+      category: 'global',
+      action: () => setShortcutsModalOpen(true)
+    },
+    {
+      key: '/',
+      ctrl: true,
+      description: 'Toggle dark mode',
+      category: 'global',
+      action: toggleDarkMode
+    },
+    {
+      key: 'k',
+      ctrl: true,
+      description: 'Focus search',
+      category: 'actions',
+      action: () => {
+        // Focus search input if exists
+        const searchInput = document.querySelector('input[type="search"], input[placeholder*="search" i], input[placeholder*="suche" i]') as HTMLInputElement;
+        if (searchInput) {
+          searchInput.focus();
+        } else {
+          showToast(t('shortcuts.noSearchField', 'No search field on this page'), 'info');
+        }
+      }
+    },
+  ], [t, showToast, toggleDarkMode]);
+
+  // Key sequences for navigation (g then d = go to dashboard)
+  const sequences = useMemo(() => [
+    {
+      keys: ['g', 'd'],
+      description: 'Go to Dashboard',
+      category: 'navigation' as const,
+      action: () => {
+        if (view !== ViewState.LANDING && view !== ViewState.LOGIN) {
+          setView(ViewState.DASHBOARD);
+        }
+      }
+    },
+    {
+      keys: ['g', 'p'],
+      description: 'Go to Profile',
+      category: 'navigation' as const,
+      action: () => {
+        if (view !== ViewState.LANDING && view !== ViewState.LOGIN) {
+          setView(ViewState.PROFILE);
+        }
+      }
+    },
+    {
+      keys: ['g', 'm'],
+      description: 'Go to Matching',
+      category: 'navigation' as const,
+      action: () => {
+        if (view !== ViewState.LANDING && view !== ViewState.LOGIN) {
+          setView(ViewState.MATCHING);
+        }
+      }
+    },
+    {
+      keys: ['g', 'n'],
+      description: 'Go to Notifications',
+      category: 'navigation' as const,
+      action: () => {
+        if (view !== ViewState.LANDING && view !== ViewState.LOGIN) {
+          setView(ViewState.NOTIFICATIONS);
+        }
+      }
+    },
+    {
+      keys: ['g', 'h'],
+      description: 'Go to Home',
+      category: 'navigation' as const,
+      action: () => setView(ViewState.LANDING)
+    },
+  ], [view]);
+
+  // Enable keyboard shortcuts
+  useKeyboardShortcuts({
+    shortcuts,
+    sequences,
+    enabled: !shortcutsModalOpen // Disable while modal is open
+  });
 
   // Load profile from local storage on boot
   useEffect(() => {
@@ -133,6 +233,14 @@ const App: React.FC = () => {
                 aria-label={t('navigation.notifications')}
             >
                 <Bell className="w-5 h-5 text-stone-600 dark:text-stone-400" />
+            </button>
+            <button
+                onClick={() => setShortcutsModalOpen(true)}
+                className="relative w-9 h-9 rounded-full flex items-center justify-center bg-stone-100 dark:bg-stone-800 hover:bg-stone-200 dark:hover:bg-stone-700 transition-all duration-300"
+                aria-label={t('shortcuts.title', 'Keyboard Shortcuts')}
+                title={t('shortcuts.pressQuestion', 'Press ? for shortcuts')}
+            >
+                <Keyboard className="w-5 h-5 text-stone-600 dark:text-stone-400" />
             </button>
             <div className="w-px h-4 bg-stone-200 dark:bg-stone-700 mx-2"></div>
             <button
@@ -276,6 +384,12 @@ const App: React.FC = () => {
           )}
         </div>
       </main>
+
+      {/* Keyboard Shortcuts Modal */}
+      <KeyboardShortcutsModal
+        isOpen={shortcutsModalOpen}
+        onClose={() => setShortcutsModalOpen(false)}
+      />
     </div>
   );
 };

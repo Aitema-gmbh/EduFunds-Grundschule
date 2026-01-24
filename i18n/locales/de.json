@@ -116,5 +116,24 @@
     "upcomingReminders": "Anstehende Erinnerungen",
     "sevenDaysBefore": "7 Tage vorher",
     "oneDayBefore": "1 Tag vorher"
+  },
+  "shortcuts": {
+    "title": "Tastenkürzel",
+    "navigation": "Navigation",
+    "actions": "Aktionen",
+    "global": "Global",
+    "goToDashboard": "Zum Dashboard",
+    "goToProfile": "Zum Profil",
+    "goToMatching": "Zum Matching",
+    "goToNotifications": "Zu Benachrichtigungen",
+    "goToHome": "Zur Startseite",
+    "saveProfile": "Aktuelles Formular speichern",
+    "search": "Suche fokussieren",
+    "closeOrBlur": "Modal schließen / Eingabe verlassen",
+    "showHelp": "Diese Hilfe anzeigen",
+    "toggleDarkMode": "Dunkelmodus umschalten",
+    "hint": "Drücken Sie ? um diese Hilfe anzuzeigen",
+    "pressQuestion": "Drücken Sie ? für Tastenkürzel",
+    "noSearchField": "Kein Suchfeld auf dieser Seite"
   }
 }
