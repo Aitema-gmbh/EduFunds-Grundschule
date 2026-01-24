@@ -14,6 +14,18 @@ export default defineConfig(({ mode }) => {
         alias: {
           '@': path.resolve(__dirname, '.'),
         }
-      }
+      },
+      test: {
+        globals: true,
+        environment: 'jsdom',
+        setupFiles: ['./vitest.setup.ts'],
+        include: ['**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
+        coverage: {
+          provider: 'v8',
+          reporter: ['text', 'json', 'html'],
+          include: ['**/*.{ts,tsx}'],
+          exclude: ['node_modules', '**/*.test.ts', '**/*.spec.ts', 'vitest.setup.ts'],
+        },
+      },
     };
 });
