@@ -8,7 +8,8 @@ export enum ViewState {
   WRITER = 'WRITER',
   RESULT = 'RESULT',
   NOTIFICATIONS = 'NOTIFICATIONS',
-  ANALYTICS = 'ANALYTICS'
+  ANALYTICS = 'ANALYTICS',
+  SETTINGS = 'SETTINGS'
 }
 
 export interface SchoolProfile {

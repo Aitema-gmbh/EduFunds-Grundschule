@@ -23,7 +23,7 @@ export const formatCurrency = (value: number): string => {
 };
 
 // Escape CSV values to handle special characters
-const escapeCSVValue = (value: string | number | undefined): string => {
+export const escapeCSVValue = (value: string | number | undefined): string => {
   if (value === undefined || value === null) return '';
   const stringValue = String(value);
   // Escape quotes and wrap in quotes if contains comma, newline, or quote
