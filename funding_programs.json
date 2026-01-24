@@ -1,0 +1,38 @@
+[
+  {
+    "id": "startchancen-grundschule-2026",
+    "title": "Startchancen-Programm (Primarstufe)",
+    "provider": "Bund & Länder",
+    "budget": "Investiv & Chancenbudget",
+    "deadline": "Laufend 2026",
+    "focus": "Basiskompetenzen",
+    "description": "Schwerpunktförderung für Grundschulen zur Stärkung der Basiskompetenzen.",
+    "requirements": "Hoher Anteil an sozial benachteiligten Schülern.",
+    "targetGroup": "Grundschüler Klasse 1-4",
+    "fundingQuota": "100%",
+    "detailedCriteria": ["Leseförderung", "Elternarbeit", "Multiprofessionelle Teams"],
+    "region": ["DE"],
+    "submissionMethod": "Verwaltungsweg",
+    "requiredDocuments": ["Schulentwicklungsplan", "Sozialdaten"],
+    "fundingPeriod": "10 Jahre",
+    "officialLink": "https://www.bmbf.de"
+  },
+  {
+    "id": "stiftung-lesen-leseclubs",
+    "title": "Leseclubs an Grundschulen",
+    "provider": "Stiftung Lesen",
+    "budget": "Ausstattung & Medienpaket",
+    "deadline": "Laufend",
+    "focus": "Sprachförderung",
+    "description": "Einrichtung von Leseclubs als freizeitorientierte Lernumgebung.",
+    "requirements": "Bereitstellung eines Raumes.",
+    "targetGroup": "Kinder 6-10 Jahre",
+    "fundingQuota": "Sachmittel",
+    "detailedCriteria": ["Regelmäßigkeit", "Ehrenamt"],
+    "region": ["DE"],
+    "submissionMethod": "Email",
+    "requiredDocuments": ["Raumskizze"],
+    "fundingPeriod": "3 Jahre",
+    "officialLink": "https://www.stiftunglesen.de"
+  }
+]
