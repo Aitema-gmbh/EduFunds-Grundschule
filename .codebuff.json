@@ -1,0 +1,10 @@
+{
+  "projectName": "EduFunds-Grundschule",
+  "description": "Grundschul-Bildungsfinanzierung App mit React, TypeScript und Supabase",
+  "conventions": [
+    "TypeScript für alle neuen Dateien",
+    "React Functional Components mit Hooks",
+    "Tailwind CSS für Styling",
+    "Supabase für Backend/Auth"
+  ]
+}

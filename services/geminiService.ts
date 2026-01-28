@@ -1,14 +1,14 @@
 import { FundingProgram, MatchResult, SchoolProfile, GeneratedApplication } from "../types";
+import { throttledGeminiFetch } from "../utils/apiUtils";
 
 export const analyzeSchoolWithGemini = async (name: string, city: string): Promise<Partial<SchoolProfile>> => {
     try {
-        const response = await fetch('/api/analyze', {
+        const response = await throttledGeminiFetch('/api/analyze', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ name, city })
         });
 
-        if (!response.ok) return { name, location: city, state: 'DE' };
         return await response.json();
     } catch (error) {
         console.error("School Analysis Error:", error);
@@ -21,13 +21,12 @@ export const matchProgramsWithGemini = async (
   programs: FundingProgram[]
 ): Promise<MatchResult[]> => {
   try {
-    const response = await fetch('/api/match', {
+    const response = await throttledGeminiFetch('/api/match', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ profile, programs })
     });
 
-    if (!response.ok) return [];
     return await response.json();
   } catch (error) {
     console.error("Matching Error:", error);
@@ -41,13 +40,12 @@ export const generateApplicationDraft = async (
   projectSpecifics: string
 ): Promise<GeneratedApplication | null> => {
     try {
-      const response = await fetch('/api/generate', {
+      const response = await throttledGeminiFetch('/api/generate', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ profile, program, projectSpecifics })
       });
 
-      if (!response.ok) return null;
       return await response.json();
     } catch (error) {
       console.error("Drafting Error:", error);
@@ -60,13 +58,12 @@ export const refineApplicationDraft = async (
     instruction: string
 ): Promise<GeneratedApplication | null> => {
     try {
-        const response = await fetch('/api/refine', {
+        const response = await throttledGeminiFetch('/api/refine', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ currentDraft, instruction })
         });
 
-        if (!response.ok) return null;
         return await response.json();
     } catch (error) {
         console.error("Refinement Error", error);
@@ -76,12 +73,11 @@ export const refineApplicationDraft = async (
 
 export const searchLiveFunding = async (): Promise<FundingProgram[]> => {
   try {
-    const response = await fetch('/api/search', {
+    const response = await throttledGeminiFetch('/api/search', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' }
     });
 
-    if (!response.ok) return [];
     return await response.json();
   } catch (error) {
     console.error("Live Search Error:", error);
