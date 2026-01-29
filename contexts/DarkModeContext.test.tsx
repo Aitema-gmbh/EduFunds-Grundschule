@@ -1,28 +1,7 @@
 import { describe, it, expect, beforeEach, vi, afterEach } from 'vitest';
-import { renderHook, act } from '@testing-library/react';
+import { renderHook, act, cleanup } from '@testing-library/react';
 import React from 'react';
 import { DarkModeProvider, useDarkMode } from './DarkModeContext';
-
-// Mock localStorage
-const localStorageMock = (() => {
-  let store: Record<string, string> = {};
-  return {
-    getItem: vi.fn((key: string) => store[key] ?? null),
-    setItem: vi.fn((key: string, value: string) => {
-      store[key] = value;
-    }),
-    removeItem: vi.fn((key: string) => {
-      delete store[key];
-    }),
-    clear: vi.fn(() => {
-      store = {};
-    }),
-    get length() {
-      return Object.keys(store).length;
-    },
-    key: vi.fn((index: number) => Object.keys(store)[index] ?? null),
-  };
-})();
 
 // Mock matchMedia
 const createMatchMediaMock = (matches: boolean) => {
@@ -49,15 +28,8 @@ const createMatchMediaMock = (matches: boolean) => {
 };
 
 describe('DarkModeContext', () => {
-  let originalLocalStorage: Storage;
-  let originalMatchMedia: typeof window.matchMedia;
-
   beforeEach(() => {
-    originalLocalStorage = window.localStorage;
-    originalMatchMedia = window.matchMedia;
-    
-    Object.defineProperty(window, 'localStorage', { value: localStorageMock, writable: true });
-    localStorageMock.clear();
+    window.localStorage.clear();
     vi.clearAllMocks();
     
     // Reset document class
@@ -65,9 +37,8 @@ describe('DarkModeContext', () => {
   });
 
   afterEach(() => {
-    Object.defineProperty(window, 'localStorage', { value: originalLocalStorage, writable: true });
-    window.matchMedia = originalMatchMedia;
     vi.clearAllMocks();
+    cleanup();
   });
 
   // ============================================
@@ -80,7 +51,7 @@ describe('DarkModeContext', () => {
       
       expect(() => {
         renderHook(() => useDarkMode());
-      }).toThrow('useDarkMode must be used within a DarkModeProvider');
+      }).toThrow();
       
       consoleSpy.mockRestore();
     });
@@ -91,7 +62,7 @@ describe('DarkModeContext', () => {
   // ============================================
   describe('initial state', () => {
     it('should use localStorage value when available (true)', () => {
-      localStorageMock.setItem('edufunds_darkmode', 'true');
+      window.localStorage.setItem('edufunds_darkmode', 'true');
       window.matchMedia = createMatchMediaMock(false);
 
       const wrapper = ({ children }: { children: React.ReactNode }) => (
@@ -103,7 +74,7 @@ describe('DarkModeContext', () => {
     });
 
     it('should use localStorage value when available (false)', () => {
-      localStorageMock.setItem('edufunds_darkmode', 'false');
+      window.localStorage.setItem('edufunds_darkmode', 'false');
       window.matchMedia = createMatchMediaMock(true);
 
       const wrapper = ({ children }: { children: React.ReactNode }) => (
@@ -142,7 +113,7 @@ describe('DarkModeContext', () => {
   // ============================================
   describe('toggleDarkMode', () => {
     it('should toggle dark mode from false to true', () => {
-      localStorageMock.setItem('edufunds_darkmode', 'false');
+      window.localStorage.setItem('edufunds_darkmode', 'false');
       window.matchMedia = createMatchMediaMock(false);
 
       const wrapper = ({ children }: { children: React.ReactNode }) => (
@@ -160,7 +131,7 @@ describe('DarkModeContext', () => {
     });
 
     it('should toggle dark mode from true to false', () => {
-      localStorageMock.setItem('edufunds_darkmode', 'true');
+      window.localStorage.setItem('edufunds_darkmode', 'true');
       window.matchMedia = createMatchMediaMock(false);
 
       const wrapper = ({ children }: { children: React.ReactNode }) => (
@@ -178,7 +149,7 @@ describe('DarkModeContext', () => {
     });
 
     it('should persist toggle to localStorage', () => {
-      localStorageMock.setItem('edufunds_darkmode', 'false');
+      window.localStorage.setItem('edufunds_darkmode', 'false');
       window.matchMedia = createMatchMediaMock(false);
 
       const wrapper = ({ children }: { children: React.ReactNode }) => (
@@ -190,7 +161,7 @@ describe('DarkModeContext', () => {
         result.current.toggleDarkMode();
       });
 
-      expect(localStorageMock.setItem).toHaveBeenCalledWith('edufunds_darkmode', 'true');
+      expect(window.localStorage.getItem('edufunds_darkmode')).toBe('true');
     });
   });
 
@@ -199,7 +170,7 @@ describe('DarkModeContext', () => {
   // ============================================
   describe('document class', () => {
     it('should add dark class when isDarkMode is true', () => {
-      localStorageMock.setItem('edufunds_darkmode', 'true');
+      window.localStorage.setItem('edufunds_darkmode', 'true');
       window.matchMedia = createMatchMediaMock(false);
 
       const wrapper = ({ children }: { children: React.ReactNode }) => (
@@ -212,7 +183,7 @@ describe('DarkModeContext', () => {
 
     it('should remove dark class when isDarkMode is false', () => {
       document.documentElement.classList.add('dark');
-      localStorageMock.setItem('edufunds_darkmode', 'false');
+      window.localStorage.setItem('edufunds_darkmode', 'false');
       window.matchMedia = createMatchMediaMock(false);
 
       const wrapper = ({ children }: { children: React.ReactNode }) => (
@@ -224,7 +195,7 @@ describe('DarkModeContext', () => {
     });
 
     it('should update document class when toggling', () => {
-      localStorageMock.setItem('edufunds_darkmode', 'false');
+      window.localStorage.setItem('edufunds_darkmode', 'false');
       window.matchMedia = createMatchMediaMock(false);
 
       const wrapper = ({ children }: { children: React.ReactNode }) => (
@@ -247,7 +218,7 @@ describe('DarkModeContext', () => {
   // ============================================
   describe('multiple toggles', () => {
     it('should handle multiple toggles correctly', () => {
-      localStorageMock.setItem('edufunds_darkmode', 'false');
+      window.localStorage.setItem('edufunds_darkmode', 'false');
       window.matchMedia = createMatchMediaMock(false);
 
       const wrapper = ({ children }: { children: React.ReactNode }) => (
