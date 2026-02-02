@@ -1,17 +1,27 @@
 const express = require('express');
 const cors = require('cors');
-const { GoogleGenerativeAI } = require('@google/genai');
+const rateLimit = require('express-rate-limit');
+const { GoogleGenAI } = require('@google/genai');
 require('dotenv').config();
 
 const app = express();
 const port = 3001;
 
+// Rate limiting configuration
+const apiLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100, // Limit each IP to 100 requests per 15 minutes
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: 'Too many requests from this IP, please try again after 15 minutes'
+});
+
 app.use(cors());
 app.use(express.json());
 
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+const genAI = new GoogleGenAI(process.env.GEMINI_API_KEY);
 
-app.post('/api/gemini', async (req, res) => {
+app.post('/api/gemini', apiLimiter, async (req, res) => {
   try {
     const { prompt, generationConfig } = req.body;
     const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash-latest' });
