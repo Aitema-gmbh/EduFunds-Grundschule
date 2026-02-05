@@ -1,0 +1,1675 @@
+[
+  {
+    "id": "bkm-kultur-digital",
+    "name": "Kultur und Digitale Kommunikation",
+    "foerdergeber": "Bundesministerium für Kultur und Medien (BKM)",
+    "foerdergeberTyp": "bund",
+    "schulformen": [
+      "grundschule",
+      "hauptschule",
+      "realschule",
+      "gymnasium",
+      "gesamtschule"
+    ],
+    "bundeslaender": [
+      "alle"
+    ],
+    "foerdersummeMin": 5000,
+    "foerdersummeMax": 50000,
+    "foerdersummeText": "5.000€ - 50.000€",
+    "kategorien": [
+      "digitalisierung",
+      "kultur",
+      "oeffentlichkeitsarbeit"
+    ],
+    "bewerbungsfristText": "laufend",
+    "bewerbungsart": "online",
+    "infoLink": "https://www.bkm.de/",
+    "kurzbeschreibung": "Förderung für digitale Kommunikations- und Vermittlungsangebote an Schulen.",
+    "status": "aktiv",
+    "createdAt": "2025-02-05T00:00:00Z",
+    "updatedAt": "2025-02-05T00:00:00Z",
+    "quelle": "bkm.bund.de",
+    "kiAntragGeeignet": true
+  },
+  {
+    "id": "bmbf-bafoeg",
+    "name": "BAföG für Schüler",
+    "foerdergeber": "Bundesministerium für Bildung und Forschung (BMBF)",
+    "foerdergeberTyp": "bund",
+    "schulformen": [
+      "grundschule",
+      "hauptschule",
+      "realschule",
+      "gymnasium",
+      "gesamtschule",
+      "foerderschule",
+      "berufsschule"
+    ],
+    "bundeslaender": [
+      "alle"
+    ],
+    "foerdersummeText": "bis zu 934€/Monat (max. 11.208€/Jahr)",
+    "kategorien": [
+      "sozial",
+      "bildungskredit"
+    ],
+    "bewerbungsfristText": "laufend",
+    "bewerbungsart": "schriftlich",
+    "infoLink": "https://www.bafeg.de/",
+    "kurzbeschreibung": "Finanzielle Unterstützung für Schüler aus einkommensschwachen Familien.",
+    "status": "aktiv",
+    "createdAt": "2025-02-05T00:00:00Z",
+    "updatedAt": "2025-02-05T00:00:00Z",
+    "quelle": "bafoeg.de",
+    "kiAntragGeeignet": false,
+    "foerdersummeMin": 0,
+    "foerdersummeMax": 11208
+  },
+  {
+    "id": "bmbf-digital",
+    "name": "Digitalisierung in Schulen",
+    "foerdergeber": "BMBF",
+    "foerdergeberTyp": "bund",
+    "schulformen": [
+      "grundschule",
+      "hauptschule",
+      "realschule",
+      "gymnasium",
+      "gesamtschule",
+      "foerderschule",
+      "berufsschule"
+    ],
+    "bundeslaender": [
+      "alle"
+    ],
+    "foerdersummeMin": 25000,
+    "foerdersummeMax": 200000,
+    "foerdersummeText": "25.000€ - 200.000€",
+    "kategorien": [
+      "digitalisierung",
+      "ki",
+      "innovation"
+    ],
+    "bewerbungsfristStart": "2025-04-01",
+    "bewerbungsfristEnde": "2025-06-30",
+    "bewerbungsfristText": "01.04. - 30.06.2025",
+    "bewerbungsart": "online",
+    "infoLink": "https://www.bmbf.de/",
+    "kurzbeschreibung": "Modellprojekte zur Digitalisierung des Unterrichts.",
+    "status": "aktiv",
+    "createdAt": "2025-02-05T00:00:00Z",
+    "updatedAt": "2025-02-05T00:00:00Z",
+    "quelle": "bmbf.de",
+    "kiAntragGeeignet": true
+  },
+  {
+    "id": "bmi-sicherheit",
+    "name": "Zivile Sicherheit an Schulen",
+    "foerdergeber": "Bundesministerium des Innern (BMI)",
+    "foerdergeberTyp": "bund",
+    "schulformen": [
+      "grundschule",
+      "hauptschule",
+      "realschule",
+      "gymnasium",
+      "gesamtschule"
+    ],
+    "bundeslaender": [
+      "alle"
+    ],
+    "foerdersummeMin": 10000,
+    "foerdersummeMax": 50000,
+    "foerdersummeText": "10.000€ - 50.000€",
+    "kategorien": [
+      "sicherheit",
+      "praevention",
+      "bevoelkerungsschutz"
+    ],
+    "bewerbungsfristText": "laufend",
+    "bewerbungsart": "online",
+    "infoLink": "https://www.bmi.bund.de/",
+    "kurzbeschreibung": "Förderung für Brandschutz, Evakuierungskonzepte und Notfalltraining.",
+    "status": "aktiv",
+    "createdAt": "2025-02-05T00:00:00Z",
+    "updatedAt": "2025-02-05T00:00:00Z",
+    "quelle": "bmi.bund.de",
+    "kiAntragGeeignet": true
+  },
+  {
+    "id": "bmuv-klima",
+    "name": "Klimaschutz an Schulen",
+    "foerdergeber": "Bundesministerium für Umwelt (BMUV)",
+    "foerdergeberTyp": "bund",
+    "schulformen": [
+      "grundschule",
+      "hauptschule",
+      "realschule",
+      "gymnasium",
+      "gesamtschule",
+      "foerderschule"
+    ],
+    "bundeslaender": [
+      "alle"
+    ],
+    "foerdersummeMin": 15000,
+    "foerdersummeMax": 80000,
+    "foerdersummeText": "15.000€ - 80.000€",
+    "kategorien": [
+      "klimaschutz",
+      "nachhaltigkeit",
+      "energie"
+    ],
+    "bewerbungsfristText": "laufend",
+    "bewerbungsart": "online",
+    "infoLink": "https://www.bmuv.de/",
+    "kurzbeschreibung": "Förderung für klimafreundliche Schulen und Umweltbildung.",
+    "status": "aktiv",
+    "createdAt": "2025-02-05T00:00:00Z",
+    "updatedAt": "2025-02-05T00:00:00Z",
+    "quelle": "bmuv.de",
+    "kiAntragGeeignet": true
+  },
+  {
+    "id": "bmas-inklusion",
+    "name": "Inklusion in der Bildung",
+    "foerdergeber": "Bundesministerium für Arbeit und Soziales (BMAS)",
+    "foerdergeberTyp": "bund",
+    "schulformen": [
+      "grundschule",
+      "hauptschule",
+      "realschule",
+      "gymnasium",
+      "gesamtschule",
+      "foerderschule"
+    ],
+    "bundeslaender": [
+      "alle"
+    ],
+    "foerdersummeMin": 20000,
+    "foerdersummeMax": 100000,
+    "foerdersummeText": "20.000€ - 100.000€",
+    "kategorien": [
+      "inklusion",
+      "barrierefreiheit",
+      "teilhabe"
+    ],
+    "bewerbungsfristText": "laufend",
+    "bewerbungsart": "online",
+    "infoLink": "https://www.bmas.de/",
+    "kurzbeschreibung": "Förderung für inklusive Bildungsprojekte und Barrierefreiheit.",
+    "status": "aktiv",
+    "createdAt": "2025-02-05T00:00:00Z",
+    "updatedAt": "2025-02-05T00:00:00Z",
+    "quelle": "bmas.de",
+    "kiAntragGeeignet": true
+  },
+  {
+    "id": "bmg-gesundheit",
+    "name": "Gesunde Schulen",
+    "foerdergeber": "Bundesministerium für Gesundheit (BMG)",
+    "foerdergeberTyp": "bund",
+    "schulformen": [
+      "grundschule",
+      "hauptschule",
+      "realschule",
+      "gymnasium",
+      "gesamtschule",
+      "foerderschule"
+    ],
+    "bundeslaender": [
+      "alle"
+    ],
+    "foerdersummeMin": 10000,
+    "foerdersummeMax": 60000,
+    "foerdersummeText": "10.000€ - 60.000€",
+    "kategorien": [
+      "gesundheit",
+      "praevention",
+      "bewegung"
+    ],
+    "bewerbungsfristText": "laufend",
+    "bewerbungsart": "online",
+    "infoLink": "https://www.bundesgesundheitsministerium.de/",
+    "kurzbeschreibung": "Förderung für Gesundheitsförderung und Prävention an Schulen.",
+    "status": "aktiv",
+    "createdAt": "2025-02-05T00:00:00Z",
+    "updatedAt": "2025-02-05T00:00:00Z",
+    "quelle": "bmg.de",
+    "kiAntragGeeignet": true
+  },
+  {
+    "id": "bmfsfj-demokratie",
+    "name": "Demokratie leben!",
+    "foerdergeber": "BMFSFJ",
+    "foerdergeberTyp": "bund",
+    "schulformen": [
+      "grundschule",
+      "hauptschule",
+      "realschule",
+      "gymnasium",
+      "gesamtschule",
+      "foerderschule"
+    ],
+    "bundeslaender": [
+      "alle"
+    ],
+    "foerdersummeMin": 5000,
+    "foerdersummeMax": 50000,
+    "foerdersummeText": "5.000€ - 50.000€",
+    "kategorien": [
+      "demokratie",
+      "partizipation",
+      "toleranz"
+    ],
+    "bewerbungsfristText": "laufend",
+    "bewerbungsart": "online",
+    "infoLink": "https://www.demokratie-leben.de/",
+    "kurzbeschreibung": "Förderung für Demokratiebildung und Engagement an Schulen.",
+    "status": "aktiv",
+    "createdAt": "2025-02-05T00:00:00Z",
+    "updatedAt": "2025-02-05T00:00:00Z",
+    "quelle": "demokratie-leben.de",
+    "kiAntragGeeignet": true
+  },
+  {
+    "id": "pad-austausch",
+    "name": "PAD Schulpartnerschaften",
+    "foerdergeber": "Pädagogischer Austauschdienst",
+    "foerdergeberTyp": "bund",
+    "schulformen": [
+      "grundschule",
+      "hauptschule",
+      "realschule",
+      "gymnasium",
+      "gesamtschule",
+      "berufsschule"
+    ],
+    "bundeslaender": [
+      "alle"
+    ],
+    "foerdersummeMin": 2000,
+    "foerdersummeMax": 15000,
+    "foerdersummeText": "2.000€ - 15.000€",
+    "kategorien": [
+      "international",
+      "austausch",
+      "sprachen"
+    ],
+    "bewerbungsfristText": "laufend",
+    "bewerbungsart": "online",
+    "infoLink": "https://www.kmk-pad.org/",
+    "kurzbeschreibung": "Austauschprogramme mit Schulen weltweit.",
+    "status": "aktiv",
+    "createdAt": "2025-02-05T00:00:00Z",
+    "updatedAt": "2025-02-05T00:00:00Z",
+    "quelle": "kmk-pad.org",
+    "kiAntragGeeignet": true
+  },
+  {
+    "id": "kmk-kultur",
+    "name": "Kulturelle Bildung",
+    "foerdergeber": "Kultusministerkonferenz",
+    "foerdergeberTyp": "bund",
+    "schulformen": [
+      "grundschule",
+      "hauptschule",
+      "realschule",
+      "gymnasium",
+      "gesamtschule",
+      "foerderschule"
+    ],
+    "bundeslaender": [
+      "alle"
+    ],
+    "foerdersummeMin": 1000,
+    "foerdersummeMax": 50000,
+    "foerdersummeText": "1.000€ - 50.000€",
+    "kategorien": [
+      "kunst",
+      "kultur",
+      "musik",
+      "theater"
+    ],
+    "bewerbungsfristText": "länderabhängig",
+    "bewerbungsart": "beides",
+    "infoLink": "https://www.kmk.org/",
+    "kurzbeschreibung": "Förderung kultureller Bildung an Schulen.",
+    "status": "aktiv",
+    "createdAt": "2025-02-05T00:00:00Z",
+    "updatedAt": "2025-02-05T00:00:00Z",
+    "quelle": "kmk.org",
+    "kiAntragGeeignet": true
+  },
+  {
+    "id": "bayern-digital",
+    "name": "DigitalPakt Bayern",
+    "foerdergeber": "Bayerisches Staatsministerium für Unterricht und Kultus",
+    "foerdergeberTyp": "land",
+    "schulformen": [
+      "grundschule",
+      "hauptschule",
+      "realschule",
+      "gymnasium",
+      "gesamtschule",
+      "foerderschule"
+    ],
+    "bundeslaender": [
+      "DE-BY"
+    ],
+    "foerdersummeMin": 10000,
+    "foerdersummeMax": 500000,
+    "foerdersummeText": "10.000€ - 500.000€",
+    "kategorien": [
+      "digitalisierung",
+      "infrastruktur",
+      "ausstattung"
+    ],
+    "bewerbungsfristText": "laufend",
+    "bewerbungsart": "online",
+    "infoLink": "https://www.km.bayern.de/",
+    "kurzbeschreibung": "Digitale Infrastruktur und Ausstattung für bayerische Schulen.",
+    "status": "aktiv",
+    "createdAt": "2025-02-05T00:00:00Z",
+    "updatedAt": "2025-02-05T00:00:00Z",
+    "quelle": "km.bayern.de",
+    "kiAntragGeeignet": true
+  },
+  {
+    "id": "berlin-schulbau",
+    "name": "Schulbau und Sanierung",
+    "foerdergeber": "Senatsverwaltung für Bildung, Jugend und Familie",
+    "foerdergeberTyp": "land",
+    "schulformen": [
+      "grundschule",
+      "hauptschule",
+      "realschule",
+      "gymnasium",
+      "gesamtschule",
+      "foerderschule"
+    ],
+    "bundeslaender": [
+      "DE-BE"
+    ],
+    "foerdersummeMin": 100000,
+    "foerdersummeMax": 5000000,
+    "foerdersummeText": "100.000€ - 5.000.000€",
+    "kategorien": [
+      "sanierung",
+      "schulbau",
+      "energie"
+    ],
+    "bewerbungsfristText": "laufend",
+    "bewerbungsart": "schriftlich",
+    "infoLink": "https://www.berlin.de/sen/bildung/",
+    "kurzbeschreibung": "Investitionsprogramm für Schulbau und Sanierung in Berlin.",
+    "status": "aktiv",
+    "createdAt": "2025-02-05T00:00:00Z",
+    "updatedAt": "2025-02-05T00:00:00Z",
+    "quelle": "berlin.de",
+    "kiAntragGeeignet": false
+  },
+  {
+    "id": "nrw-digital",
+    "name": "Digital.Schule.NRW",
+    "foerdergeber": "Ministerium für Schule und Bildung NRW",
+    "foerdergeberTyp": "land",
+    "schulformen": [
+      "grundschule",
+      "hauptschule",
+      "realschule",
+      "gymnasium",
+      "gesamtschule",
+      "foerderschule"
+    ],
+    "bundeslaender": [
+      "DE-NW"
+    ],
+    "foerdersummeMin": 5000,
+    "foerdersummeMax": 100000,
+    "foerdersummeText": "5.000€ - 100.000€",
+    "kategorien": [
+      "digitalisierung",
+      "medienkompetenz",
+      "ausstattung"
+    ],
+    "bewerbungsfristText": "laufend",
+    "bewerbungsart": "online",
+    "infoLink": "https://www.schulministerium.nrw.de/",
+    "kurzbeschreibung": "Digitale Transformation und Medienbildung in NRW.",
+    "status": "aktiv",
+    "createdAt": "2025-02-05T00:00:00Z",
+    "updatedAt": "2025-02-05T00:00:00Z",
+    "quelle": "schulministerium.nrw.de",
+    "kiAntragGeeignet": true
+  },
+  {
+    "id": "bw-mint",
+    "name": "MINT-Cluster Baden-Württemberg",
+    "foerdergeber": "Ministerium für Kultus, Jugend und Sport BW",
+    "foerdergeberTyp": "land",
+    "schulformen": [
+      "grundschule",
+      "hauptschule",
+      "realschule",
+      "gymnasium",
+      "gesamtschule"
+    ],
+    "bundeslaender": [
+      "DE-BW"
+    ],
+    "foerdersummeMin": 15000,
+    "foerdersummeMax": 80000,
+    "foerdersummeText": "15.000€ - 80.000€",
+    "kategorien": [
+      "mint",
+      "mathematik",
+      "informatik",
+      "naturwissenschaften"
+    ],
+    "bewerbungsfristText": "01.09. - 31.10.2025",
+    "bewerbungsart": "online",
+    "infoLink": "https://km-bw.de/",
+    "kurzbeschreibung": "Exzellenzcluster für MINT-Bildung in Baden-Württemberg.",
+    "status": "aktiv",
+    "createdAt": "2025-02-05T00:00:00Z",
+    "updatedAt": "2025-02-05T00:00:00Z",
+    "quelle": "km-bw.de",
+    "kiAntragGeeignet": true
+  },
+  {
+    "id": "hessen-digital",
+    "name": "Hessen: Digital@School",
+    "foerdergeber": "Hessisches Ministerium für Kultus",
+    "foerdergeberTyp": "land",
+    "schulformen": [
+      "grundschule",
+      "hauptschule",
+      "realschule",
+      "gymnasium",
+      "gesamtschule",
+      "foerderschule"
+    ],
+    "bundeslaender": [
+      "DE-HE"
+    ],
+    "foerdersummeMin": 8000,
+    "foerdersummeMax": 60000,
+    "foerdersummeText": "8.000€ - 60.000€",
+    "kategorien": [
+      "digitalisierung",
+      "ausstattung",
+      "fortbildung"
+    ],
+    "bewerbungsfristText": "laufend",
+    "bewerbungsart": "online",
+    "infoLink": "https://kultusministerium.hessen.de/",
+    "kurzbeschreibung": "Digitalisierungsstrategie für hessische Schulen.",
+    "status": "aktiv",
+    "createdAt": "2025-02-05T00:00:00Z",
+    "updatedAt": "2025-02-05T00:00:00Z",
+    "quelle": "kultusministerium.hessen.de",
+    "kiAntragGeeignet": true
+  },
+  {
+    "id": "niedersachsen-sport",
+    "name": "Sportförderung Niedersachsen",
+    "foerdergeber": "Niedersächsisches Kultusministerium",
+    "foerdergeberTyp": "land",
+    "schulformen": [
+      "grundschule",
+      "hauptschule",
+      "realschule",
+      "gymnasium",
+      "gesamtschule",
+      "foerderschule"
+    ],
+    "bundeslaender": [
+      "DE-NI"
+    ],
+    "foerdersummeMin": 3000,
+    "foerdersummeMax": 40000,
+    "foerdersummeText": "3.000€ - 40.000€",
+    "kategorien": [
+      "sport",
+      "bewegung",
+      "gesundheit"
+    ],
+    "bewerbungsfristText": "laufend",
+    "bewerbungsart": "online",
+    "infoLink": "https://www.mk.niedersachsen.de/",
+    "kurzbeschreibung": "Förderung für Sportstätten und Bewegungsangebote an Schulen.",
+    "status": "aktiv",
+    "createdAt": "2025-02-05T00:00:00Z",
+    "updatedAt": "2025-02-05T00:00:00Z",
+    "quelle": "mk.niedersachsen.de",
+    "kiAntragGeeignet": true
+  },
+  {
+    "id": "sachsen-sport",
+    "name": "SportSchule Sachsen",
+    "foerdergeber": "Sächsisches Staatsministerium für Kultus",
+    "foerdergeberTyp": "land",
+    "schulformen": [
+      "grundschule",
+      "hauptschule",
+      "realschule",
+      "gymnasium",
+      "gesamtschule"
+    ],
+    "bundeslaender": [
+      "DE-SN"
+    ],
+    "foerdersummeMin": 5000,
+    "foerdersummeMax": 50000,
+    "foerdersummeText": "5.000€ - 50.000€",
+    "kategorien": [
+      "sport",
+      "bewegung",
+      "infrastruktur"
+    ],
+    "bewerbungsfristText": "laufend",
+    "bewerbungsart": "online",
+    "infoLink": "https://www.smk.sachsen.de/",
+    "kurzbeschreibung": "Investitionen in Sportstätten und Bewegungskonzepte.",
+    "status": "aktiv",
+    "createdAt": "2025-02-05T00:00:00Z",
+    "updatedAt": "2025-02-05T00:00:00Z",
+    "quelle": "smk.sachsen.de",
+    "kiAntragGeeignet": true
+  },
+  {
+    "id": "thueringen-kunst",
+    "name": "Kunst und Kultur Thüringen",
+    "foerdergeber": "Thüringer Ministerium für Bildung, Jugend und Sport",
+    "foerdergeberTyp": "land",
+    "schulformen": [
+      "grundschule",
+      "hauptschule",
+      "realschule",
+      "gymnasium",
+      "gesamtschule"
+    ],
+    "bundeslaender": [
+      "DE-TH"
+    ],
+    "foerdersummeMin": 2000,
+    "foerdersummeMax": 30000,
+    "foerdersummeText": "2.000€ - 30.000€",
+    "kategorien": [
+      "kunst",
+      "kultur",
+      "musik",
+      "theater"
+    ],
+    "bewerbungsfristText": "01.03. - 30.04.2025",
+    "bewerbungsart": "online",
+    "infoLink": "https://www.thueringen.de/mythmus/",
+    "kurzbeschreibung": "Kulturelle Bildung und künstlerische Projekte an Schulen.",
+    "status": "aktiv",
+    "createdAt": "2025-02-05T00:00:00Z",
+    "updatedAt": "2025-02-05T00:00:00Z",
+    "quelle": "thueringen.de",
+    "kiAntragGeeignet": true
+  },
+  {
+    "id": "telekom-mint",
+    "name": "MINT-Förderung Grundschule",
+    "foerdergeber": "Telekom Stiftung",
+    "foerdergeberTyp": "stiftung",
+    "schulformen": [
+      "grundschule"
+    ],
+    "bundeslaender": [
+      "alle"
+    ],
+    "foerdersummeMin": 5000,
+    "foerdersummeMax": 30000,
+    "foerdersummeText": "5.000€ - 30.000€",
+    "kategorien": [
+      "mint",
+      "mathematik",
+      "informatik",
+      "naturwissenschaften"
+    ],
+    "bewerbungsfristStart": "2025-09-01",
+    "bewerbungsfristEnde": "2025-10-31",
+    "bewerbungsfristText": "01.09. - 31.10.2025",
+    "bewerbungsart": "online",
+    "infoLink": "https://www.telekom-stiftung.de/",
+    "kurzbeschreibung": "MINT-Bildung in der Grundschule: Experimentieren und Forschen.",
+    "status": "aktiv",
+    "createdAt": "2025-02-05T00:00:00Z",
+    "updatedAt": "2025-02-05T00:00:00Z",
+    "quelle": "telekom-stiftung.de",
+    "kiAntragGeeignet": true
+  },
+  {
+    "id": "deutsche-bank-lesen",
+    "name": "Leseförderung",
+    "foerdergeber": "Deutsche Bank Stiftung",
+    "foerdergeberTyp": "stiftung",
+    "schulformen": [
+      "grundschule"
+    ],
+    "bundeslaender": [
+      "alle"
+    ],
+    "foerdersummeMin": 2000,
+    "foerdersummeMax": 20000,
+    "foerdersummeText": "2.000€ - 20.000€",
+    "kategorien": [
+      "lesen",
+      "sprache",
+      "literatur"
+    ],
+    "bewerbungsfristStart": "2025-03-01",
+    "bewerbungsfristEnde": "2025-05-31",
+    "bewerbungsfristText": "01.03. - 31.05.2025",
+    "bewerbungsart": "online",
+    "infoLink": "https://www.deutsche-bank-stiftung.de/",
+    "kurzbeschreibung": "Leseförderung und Literaturprojekte an Grundschulen.",
+    "status": "aktiv",
+    "createdAt": "2025-02-05T00:00:00Z",
+    "updatedAt": "2025-02-05T00:00:00Z",
+    "quelle": "deutsche-bank-stiftung.de",
+    "kiAntragGeeignet": true
+  },
+  {
+    "id": "volkswagen-lehrer",
+    "name": "Lehrerfortbildung MINT",
+    "foerdergeber": "VolkswagenStiftung",
+    "foerdergeberTyp": "stiftung",
+    "schulformen": [
+      "grundschule",
+      "hauptschule",
+      "realschule",
+      "gymnasium",
+      "gesamtschule"
+    ],
+    "bundeslaender": [
+      "Niedersachsen",
+      "Bremen",
+      "Hamburg"
+    ],
+    "foerdersummeMin": 10000,
+    "foerdersummeMax": 150000,
+    "foerdersummeText": "10.000€ - 150.000€",
+    "kategorien": [
+      "mint",
+      "lehrerfortbildung",
+      "naturwissenschaften"
+    ],
+    "bewerbungsfristText": "laufend",
+    "bewerbungsart": "online",
+    "infoLink": "https://www.volkswagenstiftung.de/",
+    "kurzbeschreibung": "Fortbildung von Lehrkräften in MINT-Fächern.",
+    "status": "aktiv",
+    "createdAt": "2025-02-05T00:00:00Z",
+    "updatedAt": "2025-02-05T00:00:00Z",
+    "quelle": "volkswagenstiftung.de",
+    "kiAntragGeeignet": true
+  },
+  {
+    "id": "bosch-umwelt",
+    "name": "Umweltbildung",
+    "foerdergeber": "Robert Bosch Stiftung",
+    "foerdergeberTyp": "stiftung",
+    "schulformen": [
+      "grundschule",
+      "hauptschule",
+      "realschule",
+      "gymnasium",
+      "gesamtschule"
+    ],
+    "bundeslaender": [
+      "alle"
+    ],
+    "foerdersummeMin": 5000,
+    "foerdersummeMax": 50000,
+    "foerdersummeText": "5.000€ - 50.000€",
+    "kategorien": [
+      "umwelt",
+      "nachhaltigkeit",
+      "klimaschutz"
+    ],
+    "bewerbungsfristText": "laufend",
+    "bewerbungsart": "online",
+    "infoLink": "https://www.bosch-stiftung.de/",
+    "kurzbeschreibung": "Umweltbildung und Nachhaltigkeitsprojekte an Schulen.",
+    "status": "aktiv",
+    "createdAt": "2025-02-05T00:00:00Z",
+    "updatedAt": "2025-02-05T00:00:00Z",
+    "quelle": "bosch-stiftung.de",
+    "kiAntragGeeignet": true
+  },
+  {
+    "id": "bertelsmann-bildung",
+    "name": "Bildungsinnovation",
+    "foerdergeber": "Bertelsmann Stiftung",
+    "foerdergeberTyp": "stiftung",
+    "schulformen": [
+      "grundschule",
+      "hauptschule",
+      "realschule",
+      "gymnasium",
+      "gesamtschule",
+      "foerderschule"
+    ],
+    "bundeslaender": [
+      "alle"
+    ],
+    "foerdersummeMin": 10000,
+    "foerdersummeMax": 100000,
+    "foerdersummeText": "10.000€ - 100.000€",
+    "kategorien": [
+      "innovation",
+      "digitalisierung",
+      "schulentwicklung"
+    ],
+    "bewerbungsfristText": "laufend",
+    "bewerbungsart": "online",
+    "infoLink": "https://www.bertelsmann-stiftung.de/",
+    "kurzbeschreibung": "Innovation und Reform in der Bildung.",
+    "status": "aktiv",
+    "createdAt": "2025-02-05T00:00:00Z",
+    "updatedAt": "2025-02-05T00:00:00Z",
+    "quelle": "bertelsmann-stiftung.de",
+    "kiAntragGeeignet": true
+  },
+  {
+    "id": "eu-erasmus-schulen",
+    "name": "Erasmus+ Schulbildung",
+    "foerdergeber": "Europäische Kommission",
+    "foerdergeberTyp": "eu",
+    "schulformen": [
+      "grundschule",
+      "hauptschule",
+      "realschule",
+      "gymnasium",
+      "gesamtschule"
+    ],
+    "bundeslaender": [
+      "alle"
+    ],
+    "foerdersummeMin": 5000,
+    "foerdersummeMax": 300000,
+    "foerdersummeText": "5.000€ - 300.000€",
+    "kategorien": [
+      "international",
+      "austausch",
+      "sprachen"
+    ],
+    "bewerbungsfristStart": "2025-02-01",
+    "bewerbungsfristEnde": "2025-03-15",
+    "bewerbungsfristText": "01.02. - 15.03.2025",
+    "bewerbungsart": "online",
+    "infoLink": "https://www.erasmus-plus.de/",
+    "kurzbeschreibung": "Schulpartnerschaften und Austauschprogramme in Europa.",
+    "status": "aktiv",
+    "createdAt": "2025-02-05T00:00:00Z",
+    "updatedAt": "2025-02-05T00:00:00Z",
+    "quelle": "erasmus-plus.de",
+    "kiAntragGeeignet": true
+  },
+  {
+    "id": "eu-creative-europe",
+    "name": "Creative Europe",
+    "foerdergeber": "Europäische Kommission",
+    "foerdergeberTyp": "eu",
+    "schulformen": [
+      "grundschule",
+      "hauptschule",
+      "realschule",
+      "gymnasium",
+      "gesamtschule"
+    ],
+    "bundeslaender": [
+      "alle"
+    ],
+    "foerdersummeMin": 10000,
+    "foerdersummeMax": 100000,
+    "foerdersummeText": "10.000€ - 100.000€",
+    "kategorien": [
+      "kunst",
+      "kultur",
+      "international"
+    ],
+    "bewerbungsfristText": "laufend",
+    "bewerbungsart": "online",
+    "infoLink": "https://culture.ec.europa.eu/",
+    "kurzbeschreibung": "Kulturelle Bildung und künstlerische Kooperationen in Europa.",
+    "status": "aktiv",
+    "createdAt": "2025-02-05T00:00:00Z",
+    "updatedAt": "2025-02-05T00:00:00Z",
+    "quelle": "europa.eu",
+    "kiAntragGeeignet": true
+  },
+  {
+    "id": "eu-esf-plus",
+    "name": "ESF+ Sozialfonds",
+    "foerdergeber": "Europäische Kommission",
+    "foerdergeberTyp": "eu",
+    "schulformen": [
+      "grundschule",
+      "hauptschule",
+      "realschule",
+      "gymnasium",
+      "gesamtschule",
+      "berufsschule"
+    ],
+    "bundeslaender": [
+      "alle"
+    ],
+    "foerdersummeMin": 20000,
+    "foerdersummeMax": 200000,
+    "foerdersummeText": "20.000€ - 200.000€",
+    "kategorien": [
+      "sozial",
+      "bildung",
+      "inklusion"
+    ],
+    "bewerbungsfristText": "laufend",
+    "bewerbungsart": "online",
+    "infoLink": "https://ec.europa.eu/esf/",
+    "kurzbeschreibung": "Soziale Integration und Bildungsgerechtigkeit.",
+    "status": "aktiv",
+    "createdAt": "2025-02-05T00:00:00Z",
+    "updatedAt": "2025-02-05T00:00:00Z",
+    "quelle": "europa.eu",
+    "kiAntragGeeignet": true
+  },
+  {
+    "id": "eu-solidaritaet",
+    "name": "Europäisches Solidaritätskorps",
+    "foerdergeber": "Europäische Kommission",
+    "foerdergeberTyp": "eu",
+    "schulformen": [
+      "grundschule",
+      "hauptschule",
+      "realschule",
+      "gymnasium",
+      "gesamtschule",
+      "berufsschule"
+    ],
+    "bundeslaender": [
+      "alle"
+    ],
+    "foerdersummeMin": 10000,
+    "foerdersummeMax": 50000,
+    "foerdersummeText": "10.000€ - 50.000€",
+    "kategorien": [
+      "soziales",
+      "engagement",
+      "international"
+    ],
+    "bewerbungsfristText": "laufend",
+    "bewerbungsart": "online",
+    "infoLink": "https://europa.eu/solidarity",
+    "kurzbeschreibung": "Soziales Engagement und Volunteering in Europa.",
+    "status": "aktiv",
+    "createdAt": "2025-02-05T00:00:00Z",
+    "updatedAt": "2025-02-05T00:00:00Z",
+    "quelle": "europa.eu",
+    "kiAntragGeeignet": true
+  },
+  {
+    "id": "eu-horizon",
+    "name": "Horizon Europe Schulen",
+    "foerdergeber": "Europäische Kommission",
+    "foerdergeberTyp": "eu",
+    "schulformen": [
+      "grundschule",
+      "hauptschule",
+      "realschule",
+      "gymnasium",
+      "gesamtschule"
+    ],
+    "bundeslaender": [
+      "alle"
+    ],
+    "foerdersummeMin": 25000,
+    "foerdersummeMax": 150000,
+    "foerdersummeText": "25.000€ - 150.000€",
+    "kategorien": [
+      "forschung",
+      "innovation",
+      "mint"
+    ],
+    "bewerbungsfristText": "laufend",
+    "bewerbungsart": "online",
+    "infoLink": "https://research-and-innovation.ec.europa.eu/",
+    "kurzbeschreibung": "Forschungsprojekte und Innovation in Schulen.",
+    "status": "aktiv",
+    "createdAt": "2025-02-05T00:00:00Z",
+    "updatedAt": "2025-02-05T00:00:00Z",
+    "quelle": "europa.eu",
+    "kiAntragGeeignet": true
+  },
+  {
+    "id": "hamburg-schulbau",
+    "name": "Schulbau Hamburg",
+    "foerdergeber": "Behörde für Schule und Berufsbildung",
+    "foerdergeberTyp": "land",
+    "schulformen": [
+      "grundschule",
+      "hauptschule",
+      "realschule",
+      "gymnasium",
+      "gesamtschule"
+    ],
+    "bundeslaender": [
+      "DE-HH"
+    ],
+    "foerdersummeMin": 50000,
+    "foerdersummeMax": 2000000,
+    "foerdersummeText": "50.000€ - 2.000.000€",
+    "kategorien": [
+      "sanierung",
+      "schulbau",
+      "energie"
+    ],
+    "bewerbungsfristText": "laufend",
+    "bewerbungsart": "schriftlich",
+    "infoLink": "https://www.hamburg.de/bsb/",
+    "kurzbeschreibung": "Investitionen in Schulbau und Modernisierung.",
+    "status": "aktiv",
+    "createdAt": "2025-02-05T00:00:00Z",
+    "updatedAt": "2025-02-05T00:00:00Z",
+    "quelle": "hamburg.de",
+    "kiAntragGeeignet": false
+  },
+  {
+    "id": "brandenburg-digital",
+    "name": "Brandenburg Digital",
+    "foerdergeber": "Ministerium für Bildung, Jugend und Sport",
+    "foerdergeberTyp": "land",
+    "schulformen": [
+      "grundschule",
+      "hauptschule",
+      "realschule",
+      "gymnasium",
+      "gesamtschule"
+    ],
+    "bundeslaender": [
+      "DE-BB"
+    ],
+    "foerdersummeMin": 5000,
+    "foerdersummeMax": 40000,
+    "foerdersummeText": "5.000€ - 40.000€",
+    "kategorien": [
+      "digitalisierung",
+      "ausstattung"
+    ],
+    "bewerbungsfristText": "laufend",
+    "bewerbungsart": "online",
+    "infoLink": "https://mbjs.brandenburg.de/",
+    "kurzbeschreibung": "Digitalisierung der Schulen in Brandenburg.",
+    "status": "aktiv",
+    "createdAt": "2025-02-05T00:00:00Z",
+    "updatedAt": "2025-02-05T00:00:00Z",
+    "quelle": "brandenburg.de",
+    "kiAntragGeeignet": true
+  },
+  {
+    "id": "bremen-kunst",
+    "name": "Kunst in Schulen",
+    "foerdergeber": "Senatorin für Kultur",
+    "foerdergeberTyp": "land",
+    "schulformen": [
+      "grundschule",
+      "hauptschule",
+      "realschule",
+      "gymnasium",
+      "gesamtschule"
+    ],
+    "bundeslaender": [
+      "DE-HB"
+    ],
+    "foerdersummeMin": 2000,
+    "foerdersummeMax": 25000,
+    "foerdersummeText": "2.000€ - 25.000€",
+    "kategorien": [
+      "kunst",
+      "kultur",
+      "musik"
+    ],
+    "bewerbungsfristText": "01.03. - 31.05.2025",
+    "bewerbungsart": "online",
+    "infoLink": "https://www.kultur-bremen.de/",
+    "kurzbeschreibung": "Kulturelle Bildung und Kunstprojekte.",
+    "status": "aktiv",
+    "createdAt": "2025-02-05T00:00:00Z",
+    "updatedAt": "2025-02-05T00:00:00Z",
+    "quelle": "kultur-bremen.de",
+    "kiAntragGeeignet": true
+  },
+  {
+    "id": "mecklenburg-sport",
+    "name": "Sport MV",
+    "foerdergeber": "Ministerium für Bildung, Wissenschaft und Kultur",
+    "foerdergeberTyp": "land",
+    "schulformen": [
+      "grundschule",
+      "hauptschule",
+      "realschule",
+      "gymnasium",
+      "gesamtschule"
+    ],
+    "bundeslaender": [
+      "DE-MV"
+    ],
+    "foerdersummeMin": 3000,
+    "foerdersummeMax": 35000,
+    "foerdersummeText": "3.000€ - 35.000€",
+    "kategorien": [
+      "sport",
+      "bewegung",
+      "gesundheit"
+    ],
+    "bewerbungsfristText": "laufend",
+    "bewerbungsart": "online",
+    "infoLink": "https://www.bildung-mv.de/",
+    "kurzbeschreibung": "Sportförderung und Bewegungsangebote.",
+    "status": "aktiv",
+    "createdAt": "2025-02-05T00:00:00Z",
+    "updatedAt": "2025-02-05T00:00:00Z",
+    "quelle": "bildung-mv.de",
+    "kiAntragGeeignet": true
+  },
+  {
+    "id": "saarland-mint",
+    "name": "MINT Initiative Saarland",
+    "foerdergeber": "Ministerium für Bildung und Kultur",
+    "foerdergeberTyp": "land",
+    "schulformen": [
+      "grundschule",
+      "hauptschule",
+      "realschule",
+      "gymnasium"
+    ],
+    "bundeslaender": [
+      "DE-SL"
+    ],
+    "foerdersummeMin": 4000,
+    "foerdersummeMax": 30000,
+    "foerdersummeText": "4.000€ - 30.000€",
+    "kategorien": [
+      "mint",
+      "mathematik",
+      "informatik"
+    ],
+    "bewerbungsfristText": "laufend",
+    "bewerbungsart": "online",
+    "infoLink": "https://www.saarland.de/mbk/",
+    "kurzbeschreibung": "MINT-Förderung und naturwissenschaftliche Bildung.",
+    "status": "aktiv",
+    "createdAt": "2025-02-05T00:00:00Z",
+    "updatedAt": "2025-02-05T00:00:00Z",
+    "quelle": "saarland.de",
+    "kiAntragGeeignet": true
+  },
+  {
+    "id": "sachsen-anhalt-kultur",
+    "name": "Kultur Sachsen-Anhalt",
+    "foerdergeber": "Kultusministerium",
+    "foerdergeberTyp": "land",
+    "schulformen": [
+      "grundschule",
+      "hauptschule",
+      "realschule",
+      "gymnasium",
+      "gesamtschule"
+    ],
+    "bundeslaender": [
+      "DE-ST"
+    ],
+    "foerdersummeMin": 2000,
+    "foerdersummeMax": 20000,
+    "foerdersummeText": "2.000€ - 20.000€",
+    "kategorien": [
+      "kunst",
+      "kultur",
+      "musik"
+    ],
+    "bewerbungsfristText": "laufend",
+    "bewerbungsart": "online",
+    "infoLink": "https://kultus.sachsen-anhalt.de/",
+    "kurzbeschreibung": "Kulturelle Bildung und künstlerische Projekte.",
+    "status": "aktiv",
+    "createdAt": "2025-02-05T00:00:00Z",
+    "updatedAt": "2025-02-05T00:00:00Z",
+    "quelle": "sachsen-anhalt.de",
+    "kiAntragGeeignet": true
+  },
+  {
+    "id": "schleswig-holstein-digital",
+    "name": "Digital SH",
+    "foerdergeber": "Ministerium für Allgemeine und Berufliche Bildung",
+    "foerdergeberTyp": "land",
+    "schulformen": [
+      "grundschule",
+      "hauptschule",
+      "realschule",
+      "gymnasium",
+      "gesamtschule"
+    ],
+    "bundeslaender": [
+      "DE-SH"
+    ],
+    "foerdersummeMin": 6000,
+    "foerdersummeMax": 50000,
+    "foerdersummeText": "6.000€ - 50.000€",
+    "kategorien": [
+      "digitalisierung",
+      "ausstattung",
+      "fortbildung"
+    ],
+    "bewerbungsfristText": "laufend",
+    "bewerbungsart": "online",
+    "infoLink": "https://www.schleswig-holstein.de/DE/Landesregierung/MinisterienBehoerden/IQSH/",
+    "kurzbeschreibung": "Digitalisierung und Medienbildung.",
+    "status": "aktiv",
+    "createdAt": "2025-02-05T00:00:00Z",
+    "updatedAt": "2025-02-05T00:00:00Z",
+    "quelle": "schleswig-holstein.de",
+    "kiAntragGeeignet": true
+  },
+  {
+    "id": "rheinland-pfalz-sport",
+    "name": "Sport und Bewegung RLP",
+    "foerdergeber": "Ministerium für Bildung",
+    "foerdergeberTyp": "land",
+    "schulformen": [
+      "grundschule",
+      "hauptschule",
+      "realschule",
+      "gymnasium",
+      "gesamtschule"
+    ],
+    "bundeslaender": [
+      "DE-RP"
+    ],
+    "foerdersummeMin": 3000,
+    "foerdersummeMax": 30000,
+    "foerdersummeText": "3.000€ - 30.000€",
+    "kategorien": [
+      "sport",
+      "bewegung",
+      "gesundheit"
+    ],
+    "bewerbungsfristText": "laufend",
+    "bewerbungsart": "online",
+    "infoLink": "https://mvw.rlp.de/",
+    "kurzbeschreibung": "Sportförderung und Bewegungsangebote.",
+    "status": "aktiv",
+    "createdAt": "2025-02-05T00:00:00Z",
+    "updatedAt": "2025-02-05T00:00:00Z",
+    "quelle": "rlp.de",
+    "kiAntragGeeignet": true
+  },
+  {
+    "id": "bmw-kultur",
+    "name": "Kulturelle Bildung",
+    "foerdergeber": "BMW Stiftung",
+    "foerdergeberTyp": "stiftung",
+    "schulformen": [
+      "grundschule",
+      "hauptschule",
+      "realschule",
+      "gymnasium",
+      "gesamtschule"
+    ],
+    "bundeslaender": [
+      "alle"
+    ],
+    "foerdersummeMin": 5000,
+    "foerdersummeMax": 40000,
+    "foerdersummeText": "5.000€ - 40.000€",
+    "kategorien": [
+      "kunst",
+      "kultur",
+      "international"
+    ],
+    "bewerbungsfristText": "laufend",
+    "bewerbungsart": "online",
+    "infoLink": "https://www.bmw-stiftung.de/",
+    "kurzbeschreibung": "Kulturelle Bildung und internationale Verständigung.",
+    "status": "aktiv",
+    "createdAt": "2025-02-05T00:00:00Z",
+    "updatedAt": "2025-02-05T00:00:00Z",
+    "quelle": "bmw-stiftung.de",
+    "kiAntragGeeignet": true
+  },
+  {
+    "id": "mercedes-technik",
+    "name": "Technik und Engineering",
+    "foerdergeber": "Mercedes-Benz Stiftung",
+    "foerdergeberTyp": "stiftung",
+    "schulformen": [
+      "grundschule",
+      "hauptschule",
+      "realschule",
+      "gymnasium",
+      "gesamtschule"
+    ],
+    "bundeslaender": [
+      "alle"
+    ],
+    "foerdersummeMin": 10000,
+    "foerdersummeMax": 60000,
+    "foerdersummeText": "10.000€ - 60.000€",
+    "kategorien": [
+      "technik",
+      "engineering",
+      "mint"
+    ],
+    "bewerbungsfristText": "laufend",
+    "bewerbungsart": "online",
+    "infoLink": "https://www.mercedes-benz-stiftung.de/",
+    "kurzbeschreibung": "Technische Bildung und Engineering-Projekte.",
+    "status": "aktiv",
+    "createdAt": "2025-02-05T00:00:00Z",
+    "updatedAt": "2025-02-05T00:00:00Z",
+    "quelle": "mercedes-benz-stiftung.de",
+    "kiAntragGeeignet": true
+  },
+  {
+    "id": "sap-informatik",
+    "name": "Informatik und Programmierung",
+    "foerdergeber": "SAP Stiftung",
+    "foerdergeberTyp": "stiftung",
+    "schulformen": [
+      "grundschule",
+      "hauptschule",
+      "realschule",
+      "gymnasium",
+      "gesamtschule"
+    ],
+    "bundeslaender": [
+      "alle"
+    ],
+    "foerdersummeMin": 5000,
+    "foerdersummeMax": 35000,
+    "foerdersummeText": "5.000€ - 35.000€",
+    "kategorien": [
+      "informatik",
+      "programmierung",
+      "digitalisierung"
+    ],
+    "bewerbungsfristText": "laufend",
+    "bewerbungsart": "online",
+    "infoLink": "https://www.sap-stiftung.de/",
+    "kurzbeschreibung": "Informatikbildung und Programmierkurse.",
+    "status": "aktiv",
+    "createdAt": "2025-02-05T00:00:00Z",
+    "updatedAt": "2025-02-05T00:00:00Z",
+    "quelle": "sap-stiftung.de",
+    "kiAntragGeeignet": true
+  },
+  {
+    "id": "siemens-energie",
+    "name": "Energie und Naturwissenschaften",
+    "foerdergeber": "Siemens Stiftung",
+    "foerdergeberTyp": "stiftung",
+    "schulformen": [
+      "grundschule",
+      "hauptschule",
+      "realschule",
+      "gymnasium",
+      "gesamtschule"
+    ],
+    "bundeslaender": [
+      "alle"
+    ],
+    "foerdersummeMin": 8000,
+    "foerdersummeMax": 50000,
+    "foerdersummeText": "8.000€ - 50.000€",
+    "kategorien": [
+      "energie",
+      "naturwissenschaften",
+      "mint"
+    ],
+    "bewerbungsfristText": "laufend",
+    "bewerbungsart": "online",
+    "infoLink": "https://www.siemens-stiftung.de/",
+    "kurzbeschreibung": "Energiebildung und naturwissenschaftliche Projekte.",
+    "status": "aktiv",
+    "createdAt": "2025-02-05T00:00:00Z",
+    "updatedAt": "2025-02-05T00:00:00Z",
+    "quelle": "siemens-stiftung.de",
+    "kiAntragGeeignet": true
+  },
+  {
+    "id": "stifterverband-innovation",
+    "name": "Bildungsinnovation",
+    "foerdergeber": "Stifterverband",
+    "foerdergeberTyp": "stiftung",
+    "schulformen": [
+      "grundschule",
+      "hauptschule",
+      "realschule",
+      "gymnasium",
+      "gesamtschule"
+    ],
+    "bundeslaender": [
+      "alle"
+    ],
+    "foerdersummeMin": 15000,
+    "foerdersummeMax": 80000,
+    "foerdersummeText": "15.000€ - 80.000€",
+    "kategorien": [
+      "innovation",
+      "forschung",
+      "schulentwicklung"
+    ],
+    "bewerbungsfristText": "laufend",
+    "bewerbungsart": "online",
+    "infoLink": "https://www.stifterverband.org/",
+    "kurzbeschreibung": "Innovation in der Bildung und Hochschulforschung.",
+    "status": "aktiv",
+    "createdAt": "2025-02-05T00:00:00Z",
+    "updatedAt": "2025-02-05T00:00:00Z",
+    "quelle": "stifterverband.org",
+    "kiAntragGeeignet": true
+  },
+  {
+    "id": "postcode-lotterie",
+    "name": "Soziales Engagement",
+    "foerdergeber": "Deutsche Postcode Lotterie",
+    "foerdergeberTyp": "stiftung",
+    "schulformen": [
+      "grundschule",
+      "hauptschule",
+      "realschule",
+      "gymnasium",
+      "gesamtschule",
+      "foerderschule"
+    ],
+    "bundeslaender": [
+      "alle"
+    ],
+    "foerdersummeMin": 5000,
+    "foerdersummeMax": 50000,
+    "foerdersummeText": "5.000€ - 50.000€",
+    "kategorien": [
+      "soziales",
+      "engagement",
+      "inklusion"
+    ],
+    "bewerbungsfristText": "laufend",
+    "bewerbungsart": "online",
+    "infoLink": "https://www.postcode-lotterie.de/",
+    "kurzbeschreibung": "Soziales Engagement und gemeinnützige Projekte.",
+    "status": "aktiv",
+    "createdAt": "2025-02-05T00:00:00Z",
+    "updatedAt": "2025-02-05T00:00:00Z",
+    "quelle": "postcode-lotterie.de",
+    "kiAntragGeeignet": true
+  },
+  {
+    "id": "aktion-mensch",
+    "name": "Inklusion an Schulen",
+    "foerdergeber": "Aktion Mensch",
+    "foerdergeberTyp": "stiftung",
+    "schulformen": [
+      "grundschule",
+      "hauptschule",
+      "realschule",
+      "gymnasium",
+      "gesamtschule",
+      "foerderschule"
+    ],
+    "bundeslaender": [
+      "alle"
+    ],
+    "foerdersummeMin": 10000,
+    "foerdersummeMax": 60000,
+    "foerdersummeText": "10.000€ - 60.000€",
+    "kategorien": [
+      "inklusion",
+      "barrierefreiheit",
+      "teilhabe"
+    ],
+    "bewerbungsfristText": "laufend",
+    "bewerbungsart": "online",
+    "infoLink": "https://www.aktion-mensch.de/",
+    "kurzbeschreibung": "Inklusion und Teilhabe für Menschen mit Behinderung.",
+    "status": "aktiv",
+    "createdAt": "2025-02-05T00:00:00Z",
+    "updatedAt": "2025-02-05T00:00:00Z",
+    "quelle": "aktion-mensch.de",
+    "kiAntragGeeignet": true
+  },
+  {
+    "id": "zeit-stiftung",
+    "name": "Demokratie und Geschichte",
+    "foerdergeber": "ZEIT-Stiftung",
+    "foerdergeberTyp": "stiftung",
+    "schulformen": [
+      "grundschule",
+      "hauptschule",
+      "realschule",
+      "gymnasium",
+      "gesamtschule"
+    ],
+    "bundeslaender": [
+      "alle"
+    ],
+    "foerdersummeMin": 5000,
+    "foerdersummeMax": 40000,
+    "foerdersummeText": "5.000€ - 40.000€",
+    "kategorien": [
+      "demokratie",
+      "geschichte",
+      "politische-bildung"
+    ],
+    "bewerbungsfristText": "laufend",
+    "bewerbungsart": "online",
+    "infoLink": "https://www.zeit-stiftung.de/",
+    "kurzbeschreibung": "Demokratiebildung und historische Bildung.",
+    "status": "aktiv",
+    "createdAt": "2025-02-05T00:00:00Z",
+    "updatedAt": "2025-02-05T00:00:00Z",
+    "quelle": "zeit-stiftung.de",
+    "kiAntragGeeignet": true
+  },
+  {
+    "id": "tschira-stiftung",
+    "name": "MINT und Naturwissenschaften",
+    "foerdergeber": "Klaus Tschira Stiftung",
+    "foerdergeberTyp": "stiftung",
+    "schulformen": [
+      "grundschule",
+      "hauptschule",
+      "realschule",
+      "gymnasium",
+      "gesamtschule"
+    ],
+    "bundeslaender": [
+      "alle"
+    ],
+    "foerdersummeMin": 10000,
+    "foerdersummeMax": 70000,
+    "foerdersummeText": "10.000€ - 70.000€",
+    "kategorien": [
+      "mint",
+      "naturwissenschaften",
+      "mathematik"
+    ],
+    "bewerbungsfristText": "laufend",
+    "bewerbungsart": "online",
+    "infoLink": "https://www.klaus-tschira-stiftung.de/",
+    "kurzbeschreibung": "Naturwissenschaftliche Bildung und MINT-Förderung.",
+    "status": "aktiv",
+    "createdAt": "2025-02-05T00:00:00Z",
+    "updatedAt": "2025-02-05T00:00:00Z",
+    "quelle": "klaus-tschira-stiftung.de",
+    "kiAntragGeeignet": true
+  },
+  {
+    "id": "db-stiftung",
+    "name": "Mobilität und Verkehr",
+    "foerdergeber": "Deutsche Bahn Stiftung",
+    "foerdergeberTyp": "sonstige",
+    "schulformen": [
+      "grundschule",
+      "hauptschule",
+      "realschule",
+      "gymnasium",
+      "gesamtschule"
+    ],
+    "bundeslaender": [
+      "alle"
+    ],
+    "foerdersummeMin": 5000,
+    "foerdersummeMax": 30000,
+    "foerdersummeText": "5.000€ - 30.000€",
+    "kategorien": [
+      "mobilitaet",
+      "verkehr",
+      "umwelt"
+    ],
+    "bewerbungsfristText": "laufend",
+    "bewerbungsart": "online",
+    "infoLink": "https://www.deutschebahn-stiftung.de/",
+    "kurzbeschreibung": "Mobilitätsbildung und verkehrspädagogische Projekte.",
+    "status": "aktiv",
+    "createdAt": "2025-02-05T00:00:00Z",
+    "updatedAt": "2025-02-05T00:00:00Z",
+    "quelle": "deutschebahn-stiftung.de",
+    "kiAntragGeeignet": true
+  },
+  {
+    "id": "software-ag",
+    "name": "Digitalisierung und IT",
+    "foerdergeber": "Software AG Stiftung",
+    "foerdergeberTyp": "sonstige",
+    "schulformen": [
+      "grundschule",
+      "hauptschule",
+      "realschule",
+      "gymnasium",
+      "gesamtschule"
+    ],
+    "bundeslaender": [
+      "alle"
+    ],
+    "foerdersummeMin": 10000,
+    "foerdersummeMax": 40000,
+    "foerdersummeText": "10.000€ - 40.000€",
+    "kategorien": [
+      "digitalisierung",
+      "informatik",
+      "software"
+    ],
+    "bewerbungsfristText": "laufend",
+    "bewerbungsart": "online",
+    "infoLink": "https://www.software-ag-stiftung.de/",
+    "kurzbeschreibung": "IT-Bildung und Software-Entwicklung.",
+    "status": "aktiv",
+    "createdAt": "2025-02-05T00:00:00Z",
+    "updatedAt": "2025-02-05T00:00:00Z",
+    "quelle": "software-ag-stiftung.de",
+    "kiAntragGeeignet": true
+  },
+  {
+    "id": "heinz-nixdorf",
+    "name": "Bildung und Technik",
+    "foerdergeber": "Heinz Nixdorf Stiftung",
+    "foerdergeberTyp": "sonstige",
+    "schulformen": [
+      "grundschule",
+      "hauptschule",
+      "realschule",
+      "gymnasium",
+      "gesamtschule"
+    ],
+    "bundeslaender": [
+      "alle"
+    ],
+    "foerdersummeMin": 5000,
+    "foerdersummeMax": 35000,
+    "foerdersummeText": "5.000€ - 35.000€",
+    "kategorien": [
+      "bildung",
+      "technik",
+      "mint"
+    ],
+    "bewerbungsfristText": "laufend",
+    "bewerbungsart": "online",
+    "infoLink": "https://www.heinz-nixdorf-stiftung.de/",
+    "kurzbeschreibung": "Technische Bildung und digitale Kompetenzen.",
+    "status": "aktiv",
+    "createdAt": "2025-02-05T00:00:00Z",
+    "updatedAt": "2025-02-05T00:00:00Z",
+    "quelle": "heinz-nixdorf-stiftung.de",
+    "kiAntragGeeignet": true
+  },
+  {
+    "id": "bosch-bildung",
+    "name": "Bildungsprojekte",
+    "foerdergeber": "Bosch Stiftung",
+    "foerdergeberTyp": "sonstige",
+    "schulformen": [
+      "grundschule",
+      "hauptschule",
+      "realschule",
+      "gymnasium",
+      "gesamtschule"
+    ],
+    "bundeslaender": [
+      "alle"
+    ],
+    "foerdersummeMin": 8000,
+    "foerdersummeMax": 45000,
+    "foerdersummeText": "8.000€ - 45.000€",
+    "kategorien": [
+      "bildung",
+      "innovation",
+      "nachhaltigkeit"
+    ],
+    "bewerbungsfristText": "laufend",
+    "bewerbungsart": "online",
+    "infoLink": "https://www.bosch-stiftung.de/",
+    "kurzbeschreibung": "Bildungsinnovation und nachhaltige Entwicklung.",
+    "status": "aktiv",
+    "createdAt": "2025-02-05T00:00:00Z",
+    "updatedAt": "2025-02-05T00:00:00Z",
+    "quelle": "bosch-stiftung.de",
+    "kiAntragGeeignet": true
+  },
+  {
+    "id": "goethe-institut",
+    "name": "Sprachen und Kultur",
+    "foerdergeber": "Goethe-Institut",
+    "foerdergeberTyp": "sonstige",
+    "schulformen": [
+      "grundschule",
+      "hauptschule",
+      "realschule",
+      "gymnasium",
+      "gesamtschule"
+    ],
+    "bundeslaender": [
+      "alle"
+    ],
+    "foerdersummeMin": 5000,
+    "foerdersummeMax": 30000,
+    "foerdersummeText": "5.000€ - 30.000€",
+    "kategorien": [
+      "sprachen",
+      "kultur",
+      "international"
+    ],
+    "bewerbungsfristText": "laufend",
+    "bewerbungsart": "online",
+    "infoLink": "https://www.goethe.de/",
+    "kurzbeschreibung": "Sprachförderung und interkulturelle Bildung.",
+    "status": "aktiv",
+    "createdAt": "2025-02-05T00:00:00Z",
+    "updatedAt": "2025-02-05T00:00:00Z",
+    "quelle": "goethe.de",
+    "kiAntragGeeignet": true
+  }
+]
